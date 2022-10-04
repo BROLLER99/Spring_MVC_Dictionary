@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div>
+    <p th:text="${message}"/>
+    <p>
+        <a th:href="@{/menu1}">Dictionary1</a>
+    </p>
+    <p>
+        <a th:href="@{/menu2}">Dictionary2</a>
+    </p>
+    <p>
+        <a th:href="@{/exit}">Exit</a>
+    </p>
+</div>
+</body>
+</html>
