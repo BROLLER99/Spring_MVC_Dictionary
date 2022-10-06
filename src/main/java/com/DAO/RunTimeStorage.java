@@ -2,7 +2,9 @@ package com.DAO;
 
 import com.exeption.CustomException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -76,15 +78,17 @@ public class RunTimeStorage implements Storage {
      *                         if some property of the specified key or value prevents it from being stored in this map(IllegalArgumentException)
      */
     @Override
-    public StringBuilder outputAllElements() {
+    public List<String> outputAllElements() {
         try {
             StringBuilder stringBuilder = new StringBuilder();
+            List<String> list = new ArrayList<String>();
             for (Map.Entry<String, String> pair : dictionary.entrySet()) {
                 String key = pair.getKey();
                 String value = pair.getValue();
                 stringBuilder.append(key).append(KEY_VALUE_SEPARATOR).append(value).append("\n");
+                list.add(stringBuilder.toString());
             }
-            return stringBuilder;
+            return list;
         } catch (IllegalStateException | NullPointerException e) {
             throw new CustomException(OUTPUT_ALL_EXCEPTION);
         }

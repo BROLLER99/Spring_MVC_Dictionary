@@ -7,10 +7,10 @@
 <div>
     <p th:text="${message}"/>
     <p>
-        <a th:href="@{/menu1}">Dictionary1</a>
+        <a th:href="@{/menu?nameOfFile=words.txt&description=In this dictionary, the length of words can be only 4 characters and these characters are only letters of the Latin layout}">Dictionary1</a>
     </p>
     <p>
-        <a th:href="@{/menu2}">Dictionary2</a>
+        <a th:href="@{/menu?nameOfFile=chisla.txt&description=In this dictionary, the length of words can be only 5 characters and these characters are only numbers}">Dictionary2</a>
     </p>
     <p>
         <a th:href="@{/exit}">Exit</a>

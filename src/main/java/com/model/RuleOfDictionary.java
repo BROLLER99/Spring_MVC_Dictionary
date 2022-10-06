@@ -4,35 +4,27 @@ package com.model;
  * Класс для хранения правил словаря
  */
 public class RuleOfDictionary {
-    String pattern;
+    String nameOfFile;
     String description;
 
-    /**
-     * Конструктор задает состояние объекта необходимыми параметрами хранения правил
-     *
-     * @param pattern     - строка для хранения правил заполнения
-     * @param description - строка для описания правил словаря
-     */
-    public RuleOfDictionary(String pattern, String description) {
-        this.pattern = pattern;
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    /**
-     * Метод геттер для получения правил заполнения словаря
-     *
-     * @return возвращает правила заполнения словаря
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Метод геттер для получения описания правил словаря
-     *
-     * @return возвращает описание правил словаря
-     */
-    public String getPattern() {
-        return pattern;
+    public void setNameOfFile(String nameOfFile) {
+        this.nameOfFile = nameOfFile;
+    }
+
+    public String getNameOfFile() {
+        return nameOfFile;
+    }
+
+    public RuleOfDictionary(String nameOfFile, String description) {
+        this.nameOfFile = nameOfFile;
+        this.description = description;
     }
 }

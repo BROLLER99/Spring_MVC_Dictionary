@@ -19,9 +19,11 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 @ComponentScan(basePackages = "com")
+@PropertySource("classpath:application.properties")
 @EnableWebMvc
-@PropertySource("application.properties")
 public class SpringConfig implements WebMvcConfigurer {
+
+
     private static final int ZERO_FOR_DEFINE_STORAGE_TYPE = 0;
     private final ApplicationContext applicationContext;
 
