@@ -81,7 +81,7 @@ public class RunTimeStorage implements Storage {
     public List<String> outputAllElements() {
         try {
             StringBuilder stringBuilder = new StringBuilder();
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (Map.Entry<String, String> pair : dictionary.entrySet()) {
                 String key = pair.getKey();
                 String value = pair.getValue();

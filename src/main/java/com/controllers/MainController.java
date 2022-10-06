@@ -1,7 +1,5 @@
 package com.controllers;
 
-import com.DAO.LocalStorage;
-import com.DAO.Storage;
 import com.model.RuleOfDictionary;
 import com.service.MainService;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.List;
 
 @Controller
 public class MainController {
@@ -33,24 +30,14 @@ public class MainController {
     }
 
     @GetMapping("/menu")
-    public String firstMenu(@ModelAttribute("ruleOfDictionary") RuleOfDictionary ruleOfDictionary, Model model) {
-        System.out.println(System.getProperty("user.dir"));
-        mainService.createFile(ruleOfDictionary.getNameOfFile());
-//        model.addAttribute("message", "In this dictionary, the length of words can be only 4 characters and these characters are only letters of the Latin layout");
+    public String menu(@ModelAttribute("ruleOfDictionary") RuleOfDictionary ruleOfDictionary, Model model) {
+        mainService.setNameOfFile(ruleOfDictionary.getNameOfFile());
         model.addAttribute("message", ruleOfDictionary.getDescription());
         return "/menu";
     }
 
-//    @GetMapping("/menu2")
-//    public String secondMenu(@ModelAttribute("ruleOfDictionary") RuleOfDictionary ruleOfDictionary, Model model) {
-//        mainService.createFile(ruleOfDictionary.getNameOfFile());
-//        model.addAttribute("message", "In this dictionary, the length of words can be only 5 characters and these characters are only numbers");
-//        return "/menu2";
-//    }
-
     @GetMapping("/commands/viewAll")
     public String viewAll(Model model) throws IOException {
-        System.out.println(mainService.outputAllElements());
         model.addAttribute("message", mainService.outputAllElements());
         return "/commands/viewAll";
     }
@@ -78,7 +65,6 @@ public class MainController {
 
     @GetMapping("/commands/search")
     public String search(@RequestParam(value = "key") String key, Model model) {
-        mainService.searchElement(key);
         model.addAttribute("message", mainService.searchElement(key));
         return "/commands/search";
     }

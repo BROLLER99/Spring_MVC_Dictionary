@@ -1,27 +1,23 @@
 package com.DAO;
 
 import com.exeption.CustomException;
-
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.PatternSyntaxException;
 
-//import static com.console.View.getNumberOfDictionary;
-
+import static com.service.MainService.getNameOfFile;
 
 /**
  * Класс реализует методы интерфейса InterfaceDictionary по работе с файлом
  */
 public class LocalStorage implements Storage {
-    private static final String FILE_PATH = "./src/main/resources/";
+    private static final String FILE_PATH = System.getProperty("user.dir");
     private static final String CREATE_FILE_EXCEPTION = "Ошибка создания файла";
     private static final String SPLIT_EXCEPTION = "Ошибка разделения строки";
-    private static final String WORDS_FILE = "words.txt";
-    private static final String NUMBERS_FILE = "chisla.txt";
     private static final String TMP_FILE = "tmp";
-    private static final int ONE_FOR_NUMBER_OF_DICTIONARY = 1;
-    private static final int ONE_FOR_SPLIT = 1;
     private static final int ZERO_FOR_SPLIT = 0;
-    private String nameFile;
+
 
     /**
      * Реализация метода добавления записи в файл, интерфейса InterfaceDictionary
@@ -50,26 +46,20 @@ public class LocalStorage implements Storage {
      *                         if the specified key or value is null and this map does not permit null keys or values(NullPointerException)
      */
     @Override
-    public StringBuilder outputAllElements() throws CustomException {
+    public List<String> outputAllElements() {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
-            StringBuilder stringBuilder = new StringBuilder();
             String line;
+            List<String> list = new ArrayList<>();
             while ((line = bufferedReader.readLine()) != null) {
-
-                String[] parts = line.split(KEY_VALUE_SEPARATOR);
-
-                String name = parts[ZERO_FOR_SPLIT].trim();
-
-                String value = parts[ONE_FOR_SPLIT].trim();
-                if (!name.equals("") && !value.equals(""))
-                    stringBuilder.append(name).append(KEY_VALUE_SEPARATOR).append(value).append("\n");
+                list.add(line+"\n");
             }
             bufferedReader.close();
-            return stringBuilder;
+            return list;
         } catch (NullPointerException | IOException e) {
             throw new CustomException(OUTPUT_ALL_EXCEPTION);
         }
-    }
+        }
+
 
     /**
      * Реализация метода поиска записи в файле, интерфейса InterfaceDictionary
@@ -105,7 +95,7 @@ public class LocalStorage implements Storage {
      */
     @Override
     public void deleteElement(String key) throws CustomException {
-        File tmpFile = new File(TMP_FILE + nameFile);
+        File tmpFile = new File(TMP_FILE + getNameOfFile());
         try {
             File file = createFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
@@ -127,15 +117,9 @@ public class LocalStorage implements Storage {
         }
     }
 
-    private String nameOfFile() {
-        if (getNumberOfDictionary() == ONE_FOR_NUMBER_OF_DICTIONARY) {
-            return nameFile = WORDS_FILE;
-        } else return nameFile = NUMBERS_FILE;
-    }
-
     private File createFile() throws CustomException {
         try {
-            File file = new File(FILE_PATH,nameOfFile());
+            File file = new File(FILE_PATH,getNameOfFile());
             if (!file.exists() && !file.createNewFile()) {
                 throw new CustomException(CREATE_FILE_EXCEPTION);
             }
@@ -144,12 +128,11 @@ public class LocalStorage implements Storage {
             throw new CustomException(CREATE_FILE_EXCEPTION);
         }
     }
-
     private String splitAndPartsString(String line) throws CustomException {
         try {
             String[] parts = line.split(KEY_VALUE_SEPARATOR);
             String name = parts[ZERO_FOR_SPLIT].trim();
-            return name;
+            return name ;
         } catch (PatternSyntaxException e) {
             throw new CustomException(SPLIT_EXCEPTION);
         }
