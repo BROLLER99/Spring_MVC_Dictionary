@@ -20,7 +20,7 @@ public class MainController {
 
     @GetMapping("/mainMenu")
     public String startApp(Model model) {
-        model.addAttribute("message", "Choose the dictionary");
+        model.addAttribute("message", "Выберите словарь");
         return "/mainMenu";
     }
 

@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="utf-8">
 </head>
 <body>
 <div>
     <p th:text="${message}"/>
     <p>
-        <a th:href="@{commands/viewAll}">View all</a>
+        <a th:href="@{commands/viewAll}">Посмотреть все записи</a>
     </p>
     <p>
-        <a th:href="@{commands/addPage}">Add new</a>
+        <a th:href="@{commands/addPage}">Добавить запись</a>
     </p>
     <p>
-        <a th:href="@{commands/deletePage}">Delete</a>
+        <a th:href="@{commands/deletePage}">Удалить запись</a>
     </p>
     <p>
-        <a th:href="@{commands/searchPage}">Search</a>
+        <a th:href="@{commands/searchPage}">Поиск записи</a>
     </p>
     <p>
-        <a th:href="@{/exit}">Exit</a>
+        <a th:href="@{/exit}">Выход</a>
     </p>
 </div>
 </body>

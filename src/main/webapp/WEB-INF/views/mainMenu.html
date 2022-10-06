@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8">
+    <title>Главное меню</title>
 </head>
+
 <body>
 <div>
-    <p th:text="${message}"/>
+    <p th:text="${message}"></p>
     <p>
-        <a th:href="@{/menu?nameOfFile=words.txt&description=In this dictionary, the length of words can be only 4 characters and these characters are only letters of the Latin layout}">Dictionary1</a>
+        <a th:href="@{/menu?nameOfFile=words.txt&description=В данном словаре длинна слов может быть только 4 символа и эти символы только буквы латинской раскладки}">Словарь букв</a>
     </p>
     <p>
-        <a th:href="@{/menu?nameOfFile=chisla.txt&description=In this dictionary, the length of words can be only 5 characters and these characters are only numbers}">Dictionary2</a>
+        <a th:href="@{/menu?nameOfFile=chisla.txt&description=В данном словаре длина слов может быть только 5 символа и эти символы только цифры.}">Словарь цифр</a>
     </p>
     <p>
-        <a th:href="@{/exit}">Exit</a>
+        <a th:href="@{/exit}">Выход</a>
     </p>
 </div>
 </body>
