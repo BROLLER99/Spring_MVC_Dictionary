@@ -5,18 +5,20 @@
 </head>
 <body>
 <div>
-    <p th:text="${message}"/>
+    <p
+            th:text="${message.getDescription()}">
+    </p>
     <p>
         <a th:href="@{commands/viewAll}">Посмотреть все записи</a>
     </p>
     <p>
-        <a th:href="@{commands/addPage}">Добавить запись</a>
+        <a th:href="@{commands/addPage?pattern={pattern}(pattern=${ruleOfDictionary.getPattern()})}">Добавить запись</a>
     </p>
     <p>
-        <a th:href="@{commands/deletePage}">Удалить запись</a>
+        <a th:href="@{commands/deletePage?pattern={pattern}(pattern=${ruleOfDictionary.getPattern()})}">Удалить запись</a>
     </p>
     <p>
-        <a th:href="@{commands/searchPage}">Поиск записи</a>
+        <a th:href="@{commands/searchPage?pattern={pattern}(pattern=${ruleOfDictionary.getPattern()})}">Поиск записи</a>
     </p>
     <p>
         <a th:href="@{/exit}">Выход</a>

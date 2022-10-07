@@ -4,20 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Refactoring code and replace method createFile in DAO">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="The searchElement method in service, now returning string searching key and changed encoding to UTF-8 to print on Russian language">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/config/SpringConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/MainService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/RuleOfDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/RuleOfDictionary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/addPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/addPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/delete.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/deletePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/deletePage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/search.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/searchPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/searchPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/viewAll.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/commands/viewAll.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/exit.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/exit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/mainMenu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/menu.html" afterDir="false" />
     </list>
@@ -69,7 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/student/IdeaProjects/Spring_MVC_Dictionary",
+    "last_opened_file_path": "C:/Users/student/IdeaProjects/Alishev_lessons",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -142,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665057227729</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="The searchElement method in service, now returning string searching key and changed encoding to UTF-8 to print on Russian language">
+      <created>1665064255071</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1665064255071</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +173,7 @@
     <MESSAGE value="Started to rewrite the dictionary on Spring MVC" />
     <MESSAGE value="First working version" />
     <MESSAGE value="Refactoring code and replace method createFile in DAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring code and replace method createFile in DAO" />
+    <MESSAGE value="The searchElement method in service, now returning string searching key and changed encoding to UTF-8 to print on Russian language" />
+    <option name="LAST_COMMIT_MESSAGE" value="The searchElement method in service, now returning string searching key and changed encoding to UTF-8 to print on Russian language" />
   </component>
 </project>

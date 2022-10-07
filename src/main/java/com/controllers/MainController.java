@@ -32,7 +32,8 @@ public class MainController {
     @GetMapping("/menu")
     public String menu(@ModelAttribute("ruleOfDictionary") RuleOfDictionary ruleOfDictionary, Model model) {
         mainService.setNameOfFile(ruleOfDictionary.getNameOfFile());
-        model.addAttribute("message", ruleOfDictionary.getDescription());
+        model.addAttribute("message", ruleOfDictionary);
+        model.addAttribute("ruleOfDictionary", ruleOfDictionary);
         return "/menu";
     }
 
@@ -49,7 +50,8 @@ public class MainController {
     }
 
     @GetMapping("/commands/addPage")
-    public String add() {
+    public String addPage(@RequestParam(value = "pattern") String pattern, Model model) {
+        model.addAttribute("message",pattern);
         return "/commands/addPage";
     }
 
@@ -59,7 +61,8 @@ public class MainController {
         return "/commands/delete";
     }
     @GetMapping("/commands/deletePage")
-    public String delete() {
+    public String deletePage(@RequestParam(value = "pattern") String pattern, Model model) {
+        model.addAttribute("message",pattern);
         return "/commands/deletePage";
     }
 
@@ -69,7 +72,8 @@ public class MainController {
         return "/commands/search";
     }
     @GetMapping("/commands/searchPage")
-    public String search() {
+    public String searchPage(@RequestParam(value = "pattern") String pattern, Model model) {
+        model.addAttribute("message",pattern);
         return "/commands/searchPage";
     }
 }
