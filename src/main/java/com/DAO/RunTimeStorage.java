@@ -86,8 +86,8 @@ public class RunTimeStorage implements Storage {
                 String key = pair.getKey();
                 String value = pair.getValue();
                 stringBuilder.append(key).append(KEY_VALUE_SEPARATOR).append(value).append("\n");
-                list.add(stringBuilder.toString());
             }
+            list.add(stringBuilder.toString());
             return list;
         } catch (IllegalStateException | NullPointerException e) {
             throw new CustomException(OUTPUT_ALL_EXCEPTION);
