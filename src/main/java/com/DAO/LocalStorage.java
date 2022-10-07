@@ -1,6 +1,7 @@
 package com.DAO;
 
 import com.exeption.CustomException;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +52,14 @@ public class LocalStorage implements Storage {
             String line;
             List<String> list = new ArrayList<>();
             while ((line = bufferedReader.readLine()) != null) {
-                list.add(line+"\n");
+                list.add(line + "\n");
             }
             bufferedReader.close();
             return list;
         } catch (NullPointerException | IOException e) {
             throw new CustomException(OUTPUT_ALL_EXCEPTION);
         }
-        }
+    }
 
 
     /**
@@ -119,7 +120,7 @@ public class LocalStorage implements Storage {
 
     private File createFile() throws CustomException {
         try {
-            File file = new File(FILE_PATH,getNameOfFile());
+            File file = new File(FILE_PATH, getNameOfFile());
             if (!file.exists() && !file.createNewFile()) {
                 throw new CustomException(CREATE_FILE_EXCEPTION);
             }
@@ -128,11 +129,12 @@ public class LocalStorage implements Storage {
             throw new CustomException(CREATE_FILE_EXCEPTION);
         }
     }
+
     private String splitAndPartsString(String line) throws CustomException {
         try {
             String[] parts = line.split(KEY_VALUE_SEPARATOR);
             String name = parts[ZERO_FOR_SPLIT].trim();
-            return name ;
+            return name;
         } catch (PatternSyntaxException e) {
             throw new CustomException(SPLIT_EXCEPTION);
         }

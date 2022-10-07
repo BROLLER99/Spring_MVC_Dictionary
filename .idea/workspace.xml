@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Added a comparison with a pattern when entering a word and updated interface in commands of dictionary">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Fixed bag with output elements in method outputAllElements in RunTime dictionary">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RunTimeStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RunTimeStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665137744235</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed bag with output elements in method outputAllElements in RunTime dictionary">
+      <created>1665139390268</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1665139390268</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +181,7 @@
     <MESSAGE value="Refactoring code and replace method createFile in DAO" />
     <MESSAGE value="The searchElement method in service, now returning string searching key and changed encoding to UTF-8 to print on Russian language" />
     <MESSAGE value="Added a comparison with a pattern when entering a word and updated interface in commands of dictionary" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a comparison with a pattern when entering a word and updated interface in commands of dictionary" />
+    <MESSAGE value="Fixed bag with output elements in method outputAllElements in RunTime dictionary" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bag with output elements in method outputAllElements in RunTime dictionary" />
   </component>
 </project>

@@ -43,7 +43,7 @@ public class MainController {
         return "/commands/viewAll";
     }
 
-        @GetMapping("/commands/add")
+    @GetMapping("/commands/add")
     public String add(@RequestParam(value = "key") String key, @RequestParam(value = "value") String value) {
         mainService.addElement(key, value);
         return "/commands/add";
@@ -51,7 +51,7 @@ public class MainController {
 
     @GetMapping("/commands/addPage")
     public String addPage(@RequestParam(value = "pattern") String pattern, Model model) {
-        model.addAttribute("message",pattern);
+        model.addAttribute("message", pattern);
         return "/commands/addPage";
     }
 
@@ -60,9 +60,10 @@ public class MainController {
         mainService.deleteElement(key);
         return "/commands/delete";
     }
+
     @GetMapping("/commands/deletePage")
     public String deletePage(@RequestParam(value = "pattern") String pattern, Model model) {
-        model.addAttribute("message",pattern);
+        model.addAttribute("message", pattern);
         return "/commands/deletePage";
     }
 
@@ -71,9 +72,10 @@ public class MainController {
         model.addAttribute("message", mainService.searchElement(key));
         return "/commands/search";
     }
+
     @GetMapping("/commands/searchPage")
     public String searchPage(@RequestParam(value = "pattern") String pattern, Model model) {
-        model.addAttribute("message",pattern);
+        model.addAttribute("message", pattern);
         return "/commands/searchPage";
     }
 }

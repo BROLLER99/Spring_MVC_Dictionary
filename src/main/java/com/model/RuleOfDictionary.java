@@ -11,12 +11,15 @@ public class RuleOfDictionary {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setPattern(String pattern){
-        this.pattern=pattern;
+
+    public void setPattern(String pattern) {
+        this.pattern = pattern;
     }
-    public String getPattern(){
+
+    public String getPattern() {
         return pattern;
     }
+
     public String getDescription() {
         return description;
     }
@@ -32,6 +35,6 @@ public class RuleOfDictionary {
     public RuleOfDictionary(String nameOfFile, String description, String pattern) {
         this.nameOfFile = nameOfFile;
         this.description = description;
-        this.pattern=pattern;
+        this.pattern = pattern;
     }
 }
