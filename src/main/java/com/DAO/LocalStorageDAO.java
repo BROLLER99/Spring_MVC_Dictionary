@@ -12,7 +12,7 @@ import static com.service.MainService.getNameOfFile;
 /**
  * Класс реализует методы интерфейса InterfaceDictionary по работе с файлом
  */
-public class LocalStorage implements Storage {
+public class LocalStorageDAO implements StorageDAO {
     private static final String FILE_PATH = System.getProperty("user.dir");
     private static final String CREATE_FILE_EXCEPTION = "Ошибка создания файла";
     private static final String SPLIT_EXCEPTION = "Ошибка разделения строки";

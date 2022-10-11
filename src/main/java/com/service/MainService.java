@@ -1,6 +1,6 @@
 package com.service;
 
-import com.DAO.Storage;
+import com.DAO.StorageDAO;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -10,29 +10,29 @@ import java.util.List;
 public class MainService {
     private final static String THERE_IS_NO_SUCH_KEY = "Такого ключа нет";
     private final static String THERE_IS_SUCH_KEY = "Есть такой ключ ";
-    private final Storage storage;
+    private final StorageDAO storageDAO;
     private static String nameOfFile;
 
-    public MainService(Storage storage) {
-        this.storage = storage;
+    public MainService(StorageDAO storageDAO) {
+        this.storageDAO = storageDAO;
     }
 
     public void addElement(String key, String value) {
-        storage.addElement(key, value);
+        storageDAO.addElement(key, value);
     }
 
     public void deleteElement(String key) {
-        storage.deleteElement(key);
+        storageDAO.deleteElement(key);
     }
 
     public String searchElement(String key) {
-        if (storage.searchElement(key))
+        if (storageDAO.searchElement(key))
             return THERE_IS_SUCH_KEY + key;
         return THERE_IS_NO_SUCH_KEY;
     }
 
     public List<String> outputAllElements() throws IOException {
-        return storage.outputAllElements();
+        return storageDAO.outputAllElements();
     }
 
     public void setNameOfFile(String nameOfFile) {

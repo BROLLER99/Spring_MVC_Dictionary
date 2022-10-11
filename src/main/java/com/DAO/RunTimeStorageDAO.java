@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Класс реализует методы интерфейса InterfaceDictionary по работе с map
  */
-public class RunTimeStorage implements Storage {
+public class RunTimeStorageDAO implements StorageDAO {
     /**
      * Объект dictionary который будет хранить коллекцию Map
      */

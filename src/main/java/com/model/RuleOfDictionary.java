@@ -4,9 +4,9 @@ package com.model;
  * Класс для хранения правил словаря
  */
 public class RuleOfDictionary {
-    String nameOfFile;
-    String description;
-    String pattern;
+    private String nameOfFile;
+    private String description;
+    private String pattern;
 
     public void setDescription(String description) {
         this.description = description;
