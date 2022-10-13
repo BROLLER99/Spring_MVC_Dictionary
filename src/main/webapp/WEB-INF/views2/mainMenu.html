@@ -5,10 +5,12 @@
     <title>Main Page</title>
 </head>
 <body>
-Все словари
+Все паттерны
 <div th:each="patternModel : ${listPatterns}">
-    <a th:text="${patternModel.getNameOfDescription()}">NameOfDescription</a>
-    <a th:text="${patternModel.getDescription()}">description</a>
+    <a th:href="@{/row/allRows/{id}(id=${patternModel.getId()})}" th:text="${patternModel.getNameOfDescription()}">NameOfDescription</a>
 </div>
+<a th:href="@{/addPattern}"> Добваить паттерн</a>
+<br>
+<a th:href="@{/deletePattern}"> Удалить паттерн</a>
 </body>
 </html>

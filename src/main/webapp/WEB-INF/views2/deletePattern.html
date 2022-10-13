@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление паттерна</title>
+</head>
+<body>
+Удалить паттерн
+<form th:action="@{/deletePattern}" th:object="${patternModel}" th:method="POST" accept-charset="UTF-8">
+    NameOfDescription:<input type="text" th:field="*{nameOfDescription}"><br>
+  <button type="submit" value="deletePattern">удалить</button>
+</form>
+</body>
+</html>

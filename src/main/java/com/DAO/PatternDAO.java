@@ -30,8 +30,8 @@ public class PatternDAO implements InterfacePatternDAO {
     @Override
     public void save(PatternModel patternName) {
         try {
-            FileWriter fileWriter = new FileWriter(createFile(), true);
-            fileWriter.write(patternName.getId() + KEY_VALUE_SEPARATOR + patternName.getNameOfDescription() + KEY_VALUE_SEPARATOR + patternName.getDescription() + "\n");
+            FileWriter fileWriter = new FileWriter(createFile(), StandardCharsets.UTF_8,true);
+            fileWriter.write("\n" + patternName.getId() + KEY_VALUE_SEPARATOR + patternName.getNameOfDescription() + KEY_VALUE_SEPARATOR + patternName.getDescription());
             fileWriter.close();
         } catch (SecurityException | IOException e) {
             throw new CustomException(ADD_EXCEPTION);
@@ -40,7 +40,7 @@ public class PatternDAO implements InterfacePatternDAO {
 
 
     @Override
-    public Optional<Boolean> findById(PatternModel patternName) {
+    public Optional<Boolean> findById(PatternModel patternName) {/// TODO: А оно надо вообще?
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
@@ -65,7 +65,7 @@ public class PatternDAO implements InterfacePatternDAO {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (!splitAndPartsString(line).equals(String.valueOf(patternName.getId()))) {
+                if (!splitAndPartsString(line).equals(patternName.getNameOfDescription())) {
                     bufferedWriter.write(line);
                     bufferedWriter.newLine();
                 }
@@ -78,7 +78,6 @@ public class PatternDAO implements InterfacePatternDAO {
         } catch (NullPointerException | SecurityException | IOException e) {
             throw new CustomException(DELETE_EXCEPTION);
         }
-
     }
 
     @Override
@@ -99,8 +98,8 @@ public class PatternDAO implements InterfacePatternDAO {
     private String splitAndPartsString(String line) throws CustomException {
         try {
             String[] parts = line.split(KEY_VALUE_SEPARATOR);
-            String ID = parts[ZERO_FOR_SPLIT].trim();
-            return ID;
+            String nameOfDescription = parts[1].trim();
+            return nameOfDescription;
         } catch (PatternSyntaxException e) {
             throw new CustomException(SPLIT_EXCEPTION);
         }

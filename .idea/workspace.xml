@@ -9,12 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Rename DAO classes and set private fields in models">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/InterfaceOfEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/InterfaceOfEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/EntityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/EntityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/addPattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/addPattern.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/mainMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/mainMenu.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +75,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/student/IdeaProjects/Spring_Dictionary",
+    "last_opened_file_path": "C:/Users/student/IdeaProjects/Dictionary-unified-methods-dao",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -270,7 +273,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664885848670</updated>
       <workItem from="1665560107013" duration="1101000" />
-      <workItem from="1665561240192" duration="15630000" />
+      <workItem from="1665561240192" duration="29907000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>
@@ -328,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665492073514</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page">
+      <created>1665583434246</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1665583434246</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,6 +376,7 @@
     <MESSAGE value="Fixed bag with output elements in method outputAllElements in RunTime dictionary" />
     <MESSAGE value="Refactoring code" />
     <MESSAGE value="Rename DAO classes and set private fields in models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rename DAO classes and set private fields in models" />
+    <MESSAGE value="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page" />
   </component>
 </project>

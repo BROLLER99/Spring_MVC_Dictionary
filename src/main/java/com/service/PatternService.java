@@ -28,7 +28,6 @@ public class PatternService {
 
     public List<PatternModel> findAll() {
         List<PatternModel> all = patternDAO.findAll();
-        System.out.println(all.get(0).getDescription());
         return patternDAO.findAll();
     }
 }

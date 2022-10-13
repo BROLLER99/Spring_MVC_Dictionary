@@ -14,11 +14,11 @@ import java.util.Optional;
 import java.util.regex.PatternSyntaxException;
 @Component
 public class RowDAO implements InterfaceRowDAO {
-    private static final String PATTERN_FILE_NAME = "Row.txt";
+    private static final String ROW_FILE_NAME = "Row.txt";
 
     private File createFile() throws CustomException {
         try {
-            File file = new File(FILE_PATH, PATTERN_FILE_NAME);
+            File file = new File(FILE_PATH, ROW_FILE_NAME);
             if (!file.exists() && !file.createNewFile()) {
                 throw new CustomException(CREATE_FILE_EXCEPTION);
             }
@@ -59,7 +59,7 @@ public class RowDAO implements InterfaceRowDAO {
 
     @Override
     public void delete(RowModel rowModel) {
-        File tmpFile = new File(TMP_FILE + PATTERN_FILE_NAME);
+        File tmpFile = new File(TMP_FILE + ROW_FILE_NAME);
         try {
             File file = createFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
