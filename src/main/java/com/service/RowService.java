@@ -1,15 +1,22 @@
 package com.service;
 
 import com.DAO.RowDAO;
+import com.model.PatternModel;
 import com.model.RowModel;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class RowService {
     private final RowDAO rowDAO;
-    public RowService(RowDAO rowDAO) {
+    private final PatternService patternService;
+
+    public RowService(RowDAO rowDAO, PatternService patternService) {
         this.rowDAO = rowDAO;
+        this.patternService = patternService;
     }
     public void save(RowModel rowModel) {
         rowDAO.save(rowModel);
@@ -23,7 +30,18 @@ public class RowService {
         rowDAO.delete(rowModel);
     }
 
-    public List<RowModel> findAll() {
+    public List<RowModel> findRuleById(String id) {
+        PatternModel patternModel = patternService.findById(id);
+        List<RowModel> listRow = findAll();
+        List<RowModel> listRowWithRule = new ArrayList<>();
+        for (RowModel rowModel : listRow) {
+            if (Objects.equals(rowModel.getPatternID(), patternModel.getId())) {
+                listRowWithRule.add(rowModel);
+            }
+        }
+        return listRowWithRule;
+    }
+    private List<RowModel> findAll() {
         return  rowDAO.findAll();
     }
 }

@@ -1,34 +1,34 @@
 package com.model;
 
 public class RowModel {
-    private int id;
+    private String id;
     private String word;
     private String value;
-    private int pattern_id;
+    private String patternID;
 
-    public RowModel(int id, String word, String value, int pattern_id) {
+    public RowModel(String id, String word, String value, String patternID) {
         this.id = id;
         this.word = word;
         this.value = value;
-        this.pattern_id = pattern_id;
+        this.patternID = patternID;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     public RowModel() {
     }
 
-    public void setPattern_id(int pattern_id) {
-        this.pattern_id = pattern_id;
+    public void setPatternID(String patternID) {
+        this.patternID = patternID;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public int getPattern_id() {
-        return pattern_id;
+    public String getPatternID() {
+        return patternID;
     }
 
     public void setWord(String word) {

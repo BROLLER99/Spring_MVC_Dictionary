@@ -18,16 +18,15 @@ public class PatternService {
         patternDAO.save(patternModel);
     }
 
-    public void findById(PatternModel patternModel) {
-        patternDAO.findById(patternModel);
-    }
-
     public void delete(PatternModel patternModel) {
         patternDAO.delete(patternModel);
     }
 
     public List<PatternModel> findAll() {
-        List<PatternModel> all = patternDAO.findAll();
         return patternDAO.findAll();
+    }
+
+    public PatternModel findById(String id) {
+        return patternDAO.findById(id);
     }
 }

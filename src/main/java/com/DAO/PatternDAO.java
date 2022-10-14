@@ -1,116 +1,60 @@
 package com.DAO;
 
 import com.exeption.CustomException;
+import com.exeption.SearchException;
 import com.model.PatternModel;
-import com.model.RowModel;
+import com.utils.FileUtils;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
-import java.util.regex.PatternSyntaxException;
+
 @Component
-public class PatternDAO implements InterfacePatternDAO {
+public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
     private final String PATTERN_FILE_NAME = "Pattern.txt";
 
+    private final FileWorker fileWorker;
+
+    public PatternDAO(FileWorker fileWorker) {
+        this.fileWorker = fileWorker;
+    }
+
     private File createFile() throws CustomException {
-        try {
-            File file = new File(FILE_PATH, PATTERN_FILE_NAME);
-            if (!file.exists() && !file.createNewFile()) {
-                throw new CustomException(CREATE_FILE_EXCEPTION);
-            }
-            return file;
-        } catch (IOException | SecurityException | NullPointerException e) {
-            throw new CustomException(CREATE_FILE_EXCEPTION);
-        }
+        return fileWorker.createFile(PATTERN_FILE_NAME);
     }
 
     @Override
     public void save(PatternModel patternName) {
-        try {
-            FileWriter fileWriter = new FileWriter(createFile(), StandardCharsets.UTF_8,true);
-            fileWriter.write("\n" + patternName.getId() + KEY_VALUE_SEPARATOR + patternName.getNameOfDescription() + KEY_VALUE_SEPARATOR + patternName.getDescription());
-            fileWriter.close();
-        } catch (SecurityException | IOException e) {
-            throw new CustomException(ADD_EXCEPTION);
-        }
-    }
-
-
-    @Override
-    public Optional<Boolean> findById(PatternModel patternName) {/// TODO: А оно надо вообще?
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-
-                if (splitAndPartsString(line).equals(String.valueOf(patternName.getId()))) {
-                    return Optional.of(false);
-                }
-            }
-            bufferedReader.close();
-            return Optional.of(true);
-        } catch (IOException e) {
-            throw new CustomException(SEARCH_EXCEPTION);
-        }
+        String row = FileUtils.toFileEntry(patternName.getId(), patternName.getNameOfDescription(), patternName.getDescription());
+        fileWorker.save(PATTERN_FILE_NAME, row);
     }
 
     @Override
     public void delete(PatternModel patternName) {
-        File tmpFile = new File(TMP_FILE + PATTERN_FILE_NAME);
-        try {
-            File file = createFile();
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                if (!splitAndPartsString(line).equals(patternName.getNameOfDescription())) {
-                    bufferedWriter.write(line);
-                    bufferedWriter.newLine();
-                }
-            }
-            bufferedWriter.close();
-            bufferedReader.close();
-            file.delete();
-            tmpFile.renameTo(file);
-
-        } catch (NullPointerException | SecurityException | IOException e) {
-            throw new CustomException(DELETE_EXCEPTION);
-        }
+        fileWorker.delete(PATTERN_FILE_NAME, patternName.getId());
     }
 
     @Override
     public List<PatternModel> findAll() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(), StandardCharsets.UTF_8))) {
+        return fileWorker.findAll(PATTERN_FILE_NAME);
+    }
+
+    public PatternModel findById(String id) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
             String line;
-            List<PatternModel> list = new ArrayList<>();
             while ((line = bufferedReader.readLine()) != null) {
-                list.add(convertFromRowToPattern(line));
+
+                if (FileUtils.splitAndPartsString(line).equals(id)) {
+                    return (PatternModel) FileUtils.convertFromStringToEntity(line);
+                }
             }
             bufferedReader.close();
-            return list;
-        } catch (NullPointerException | IOException e) {
-            throw new CustomException(OUTPUT_ALL_EXCEPTION);
+            return null;//todo что-то возвращать
+        } catch (IOException e) {
+            throw new SearchException(id);
         }
     }
-
-    private String splitAndPartsString(String line) throws CustomException {
-        try {
-            String[] parts = line.split(KEY_VALUE_SEPARATOR);
-            String nameOfDescription = parts[1].trim();
-            return nameOfDescription;
-        } catch (PatternSyntaxException e) {
-            throw new CustomException(SPLIT_EXCEPTION);
-        }
-    }
-    private PatternModel convertFromRowToPattern(String line){
-        String[] parts = line.split(KEY_VALUE_SEPARATOR);
-        PatternModel pattern = new PatternModel();
-        pattern.setId(Integer.parseInt(parts[0].trim()));
-        pattern.setNameOfDescription(parts[1].trim());
-        pattern.setDescription(parts[2].trim());
-        return pattern;
-    }
-
 }

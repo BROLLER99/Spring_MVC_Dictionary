@@ -6,7 +6,7 @@
 </head>
 <body>
 Добавить паттерн
-<form th:action="@{/addPattern}" th:object="${patternModel}" th:method="POST" accept-charset="UTF-8">
+<form th:action="@{addPattern}" th:object="${patternModel}" th:method="POST" accept-charset="UTF-8">
     ID:<input type="text" th:field="*{id}"><br>
     NameOfDescription:<input type="text" th:field="*{nameOfDescription}"><br>
     Description:<input type="text" th:field="*{description}"><br>

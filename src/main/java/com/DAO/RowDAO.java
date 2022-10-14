@@ -1,119 +1,60 @@
 package com.DAO;
 
 import com.exeption.CustomException;
-import com.model.PatternModel;
+import com.exeption.SearchException;
 import com.model.RowModel;
+import com.utils.FileUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.PatternSyntaxException;
+
+
 @Component
-public class RowDAO implements InterfaceRowDAO {
+public class RowDAO implements CrudDAO<RowModel, RowModel> {
     private static final String ROW_FILE_NAME = "Row.txt";
 
+    private FileWorker fileWorker;
+
+    public RowDAO(FileWorker fileWorker) {
+        this.fileWorker = fileWorker;
+    }
+
     private File createFile() throws CustomException {
-        try {
-            File file = new File(FILE_PATH, ROW_FILE_NAME);
-            if (!file.exists() && !file.createNewFile()) {
-                throw new CustomException(CREATE_FILE_EXCEPTION);
-            }
-            return file;
-        } catch (IOException | SecurityException | NullPointerException e) {
-            throw new CustomException(CREATE_FILE_EXCEPTION);
-        }
+        return fileWorker.createFile(ROW_FILE_NAME);
     }
 
     @Override
     public void save(RowModel rowModel) {
-        try {
-            FileWriter fileWriter = new FileWriter(createFile(), true);
-            fileWriter.write(rowModel.getWord() + KEY_VALUE_SEPARATOR + rowModel.getValue() + "\n");
-            fileWriter.close();
-        } catch (SecurityException | IOException e) {
-            throw new CustomException(ADD_EXCEPTION);
-        }
+        String row = "\n" + FileUtils.toFileEntry(rowModel.getId(), rowModel.getWord(), rowModel.getValue(), rowModel.getPatternID());
+        fileWorker.save(ROW_FILE_NAME, row);
     }
 
-
-    @Override
     public Optional<Boolean> findById(RowModel rowModel) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
 
-                if (splitAndPartsString(line).equals(rowModel.getWord())) {
+                if (FileUtils.splitAndPartsString(line).equals(rowModel.getId())) {
                     return Optional.of(false);
                 }
             }
             bufferedReader.close();
             return Optional.of(true);
         } catch (IOException e) {
-            throw new CustomException(SEARCH_EXCEPTION);
+            throw new SearchException(rowModel.getWord());
         }
     }
 
     @Override
     public void delete(RowModel rowModel) {
-        File tmpFile = new File(TMP_FILE + ROW_FILE_NAME);
-        try {
-            File file = createFile();
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                if (!splitAndPartsString(line).equals(rowModel.getWord())) {
-                    bufferedWriter.write(line);
-                    bufferedWriter.newLine();
-                }
-            }
-            bufferedWriter.close();
-            bufferedReader.close();
-            file.delete();
-            tmpFile.renameTo(file);
-
-        } catch (NullPointerException | SecurityException | IOException e) {
-            throw new CustomException(DELETE_EXCEPTION);
-        }
-
+        fileWorker.delete(ROW_FILE_NAME, rowModel.getWord());
     }
 
     @Override
     public List<RowModel> findAll() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(), StandardCharsets.UTF_8))) {
-            String line;
-            List<RowModel> list = new ArrayList<>();
-            while ((line = bufferedReader.readLine()) != null) {
-                list.add(convertFromStringToRow(line + "\n"));
-            }
-            bufferedReader.close();
-            return list;
-        } catch (NullPointerException | IOException e) {
-            throw new CustomException(OUTPUT_ALL_EXCEPTION);
-        }
-    }
-
-    private String splitAndPartsString(String line) throws CustomException {
-        try {
-            String[] parts = line.split(KEY_VALUE_SEPARATOR);
-            String name = parts[ZERO_FOR_SPLIT].trim();
-            return name;
-        } catch (PatternSyntaxException e) {
-            throw new CustomException(SPLIT_EXCEPTION);
-        }
-    }
-    private RowModel convertFromStringToRow(String line){
-        String[] parts = line.split(KEY_VALUE_SEPARATOR);
-       RowModel row = new RowModel();
-        row.setId(Integer.parseInt(parts[0].trim()));
-        row.setWord(parts[1].trim());
-        row.setValue(parts[2].trim());
-        row.setPattern_id(Integer.parseInt(parts[3].trim()));
-        return row;
+        return fileWorker.findAll(ROW_FILE_NAME);
     }
 
 }

@@ -2,7 +2,6 @@ package com.controllers;
 
 import com.model.RuleOfDictionary;
 import com.service.MainService;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,7 +20,7 @@ public class MainController {
     @GetMapping("/mainMenu")
     public String startApp(Model model) {
         model.addAttribute("message", "Выберите словарь");
-        return "/mainMenu";
+        return "pattern/mainMenu";
     }
 
     @GetMapping("/exit")
