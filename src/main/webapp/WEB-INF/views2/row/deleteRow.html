@@ -5,6 +5,10 @@
     <title>Delete row</title>
 </head>
 <body>
-delete
+Удалить строку
+<form th:action="@{{id}(id=${id})}" th:object="${rowModel}" th:method="POST" accept-charset="UTF-8">
+    ID:<input type="text" th:field="*{idOfRow}"><br>
+    <button type="submit" value="deletePattern">удалить</button>
+</form>
 </body>
 </html>

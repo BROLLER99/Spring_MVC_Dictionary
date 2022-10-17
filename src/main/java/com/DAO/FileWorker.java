@@ -27,7 +27,7 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
     }
 
     public void save(String fileName, String row) {
-        try (FileWriter fileWriter = new FileWriter(createFile(fileName), true)) {
+        try (FileWriter fileWriter = new FileWriter(createFile(fileName),StandardCharsets.UTF_8, true)) {
             if (createFile(fileName).length() != 0) {
                 fileWriter.write(System.lineSeparator());
             }
@@ -37,16 +37,21 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
         }
     }
 
-    public void delete(String fileName, String row) {
+    public void delete(String fileName, String idOfRow) {
+        boolean firstRow = true;
         File tmpFile = new File(TMP_FILE + TMP_FILE + fileName);
         File file = createFile(fileName);
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (!FileUtils.splitAndPartsString(line).equals(row)) {
+                if (!FileUtils.splitAndPartsString(line).equals(idOfRow)) {
+                    if(firstRow){
+                        firstRow = false;
+                    }else {
+                        bufferedWriter.write(System.lineSeparator());
+                    }
                     bufferedWriter.write(line);
-                    bufferedWriter.newLine();
                 }
             }
             bufferedWriter.close();

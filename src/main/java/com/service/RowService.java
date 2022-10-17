@@ -30,12 +30,12 @@ public class RowService {
         rowDAO.delete(rowModel);
     }
 
-    public List<RowModel> findRuleById(String id) {
-        PatternModel patternModel = patternService.findById(id);
+    public List<RowModel> findRuleById(String idOfChosenPattern) {
+        PatternModel patternModel = patternService.findById(idOfChosenPattern);
         List<RowModel> listRow = findAll();
         List<RowModel> listRowWithRule = new ArrayList<>();
         for (RowModel rowModel : listRow) {
-            if (Objects.equals(rowModel.getPatternID(), patternModel.getId())) {
+            if (Objects.equals(rowModel.getPatternId(), patternModel.getIdOfDescription())) {
                 listRowWithRule.add(rowModel);
             }
         }

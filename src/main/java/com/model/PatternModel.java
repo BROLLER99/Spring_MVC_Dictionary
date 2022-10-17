@@ -1,24 +1,24 @@
 package com.model;
 
 public class PatternModel {
-    private String id;
+    private String idOfDescription;
     private String description;
     private String nameOfDescription;
-    public PatternModel(String description, String nameOfDescription, String id) {
+    public PatternModel(String description, String nameOfDescription, String idOfDescription) {
         this.description = description;
         this.nameOfDescription = nameOfDescription;
-        this.id = id;
+        this.idOfDescription = idOfDescription;
     }
 
     public PatternModel() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdOfDescription(String idOfDescription) {
+        this.idOfDescription = idOfDescription;
     }
 
-    public String getId() {
-        return id;
+    public String getIdOfDescription() {
+        return idOfDescription;
     }
 
     public String getDescription() {

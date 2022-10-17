@@ -7,7 +7,7 @@
 <body>
 Все паттерны
 <div th:each="patternModel : ${listPatterns}">
-    <a th:href="@{/row/{id}(id=${patternModel.getId()})}" th:text="${patternModel.getNameOfDescription()}">NameOfDescription</a>
+    <a th:href="@{/row/{id}(id=${patternModel.getIdOfDescription()})}" th:text="${patternModel.getNameOfDescription()}">NameOfDescription</a>
 </div>
 <a th:href="@{/pattern/addPattern}"> Добваить паттерн</a>
 <br>

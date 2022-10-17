@@ -9,23 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Added three methods for working with the &quot;pattern&quot;, started working with the next entity">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/InterfaceOfEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/InterfacePatternDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/InterfaceRowDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/EntityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/PatternController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/model/PatternModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/PatternModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/model/RowModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/RowModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/addPattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/addPattern.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/deletePattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/deletePattern.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/mainMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/mainMenu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/addPattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/addPattern.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/deletePattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/deletePattern.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/mainMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/mainMenu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/deleteRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/deleteRow.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +36,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -281,7 +281,8 @@
       <option name="presentableId" value="Default" />
       <updated>1664885848670</updated>
       <workItem from="1665560107013" duration="1101000" />
-      <workItem from="1665561240192" duration="62429000" />
+      <workItem from="1665561240192" duration="63268000" />
+      <workItem from="1665985781961" duration="22294000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>
@@ -353,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1665657627102</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity">
+      <created>1665756553227</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1665756553227</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,6 +401,7 @@
     <MESSAGE value="Rename DAO classes and set private fields in models" />
     <MESSAGE value="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page" />
     <MESSAGE value="Added three methods for working with the &quot;pattern&quot;, started working with the next entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added three methods for working with the &quot;pattern&quot;, started working with the next entity" />
+    <MESSAGE value="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity" />
   </component>
 </project>

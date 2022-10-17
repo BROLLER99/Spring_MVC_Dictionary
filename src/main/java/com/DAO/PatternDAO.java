@@ -28,13 +28,13 @@ public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
 
     @Override
     public void save(PatternModel patternName) {
-        String row = FileUtils.toFileEntry(patternName.getId(), patternName.getNameOfDescription(), patternName.getDescription());
+        String row = FileUtils.toFileEntry(patternName.getIdOfDescription(), patternName.getNameOfDescription(), patternName.getDescription());
         fileWorker.save(PATTERN_FILE_NAME, row);
     }
 
     @Override
     public void delete(PatternModel patternName) {
-        fileWorker.delete(PATTERN_FILE_NAME, patternName.getId());
+        fileWorker.delete(PATTERN_FILE_NAME, patternName.getIdOfDescription());
     }
 
     @Override
@@ -42,19 +42,19 @@ public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
         return fileWorker.findAll(PATTERN_FILE_NAME);
     }
 
-    public PatternModel findById(String id) {
+    public PatternModel findById(String idOfChosenPattern) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
 
-                if (FileUtils.splitAndPartsString(line).equals(id)) {
+                if (FileUtils.splitAndPartsString(line).equals(idOfChosenPattern)) {
                     return (PatternModel) FileUtils.convertFromStringToEntity(line);
                 }
             }
             bufferedReader.close();
-            return null;//todo что-то возвращать
+            return new PatternModel();//todo Норм?
         } catch (IOException e) {
-            throw new SearchException(id);
+            throw new SearchException(idOfChosenPattern);
         }
     }
 }

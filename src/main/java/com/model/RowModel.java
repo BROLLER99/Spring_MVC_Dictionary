@@ -1,34 +1,44 @@
 package com.model;
 
 public class RowModel {
-    private String id;
+    private String idOfRow;
     private String word;
     private String value;
-    private String patternID;
+    private String patternId;
 
-    public RowModel(String id, String word, String value, String patternID) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "RowModel{" +
+                "idOfRow='" + idOfRow + '\'' +
+                ", word='" + word + '\'' +
+                ", value='" + value + '\'' +
+                ", patternId='" + patternId + '\'' +
+                '}';
+    }
+
+    public RowModel(String idOfRow, String word, String value, String patternId) {
+        this.idOfRow = idOfRow;
         this.word = word;
         this.value = value;
-        this.patternID = patternID;
+        this.patternId = patternId;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setIdOfRow(String idOfRow) {
+        this.idOfRow = idOfRow;
     }
 
     public RowModel() {
     }
 
-    public void setPatternID(String patternID) {
-        this.patternID = patternID;
+    public void setPatternId(String patternId) {
+        this.patternId = patternId;
     }
 
-    public String getId() {
-        return id;
+    public String getIdOfRow() {
+        return idOfRow;
     }
 
-    public String getPatternID() {
-        return patternID;
+    public String getPatternId() {
+        return patternId;
     }
 
     public void setWord(String word) {

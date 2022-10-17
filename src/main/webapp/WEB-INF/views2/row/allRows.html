@@ -5,13 +5,16 @@
     <title>Row menu</title>
 </head>
 <body>
-Все строки выбранного словаря
+Все строки выбранного словаря<br>
+<a th:text="${id}">Word</a>
 <div th:each="rowModel : ${listRows}">
     <a th:text="${rowModel.getWord()}">Word</a>
     <a th:text="${rowModel.getValue()}">Value</a>
 </div>
-<a th:href="@{/row/addRow}"> Добваить строку</a>
+<a th:href="@{/row/addRow/{id}(id=${id})}"> Добваить строку</a>
 <br>
-<a th:href="@{/row/deleteRow}"> Удалить строку</a>
+<a th:href="@{/row/deleteRow/{id}(id=${id})}"> Удалить строку</a>
+<br>
+<a th:href="@{/pattern}"> Вернуться к выбору паттерна</a>
 </body>
 </html>

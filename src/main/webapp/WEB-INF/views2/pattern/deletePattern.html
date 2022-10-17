@@ -7,7 +7,7 @@
 <body>
 Удалить паттерн
 <form th:action="@{deletePattern}" th:object="${patternModel}" th:method="POST" accept-charset="UTF-8">
-    ID:<input type="text" th:field="*{id}"><br>
+    ID:<input type="text" th:field="*{idOfDescription}"><br>
   <button type="submit" value="deletePattern">удалить</button>
 </form>
 </body>

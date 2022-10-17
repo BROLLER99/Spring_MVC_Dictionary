@@ -15,7 +15,7 @@ import java.util.Optional;
 public class RowDAO implements CrudDAO<RowModel, RowModel> {
     private static final String ROW_FILE_NAME = "Row.txt";
 
-    private FileWorker fileWorker;
+    private final FileWorker fileWorker;
 
     public RowDAO(FileWorker fileWorker) {
         this.fileWorker = fileWorker;
@@ -27,7 +27,7 @@ public class RowDAO implements CrudDAO<RowModel, RowModel> {
 
     @Override
     public void save(RowModel rowModel) {
-        String row = "\n" + FileUtils.toFileEntry(rowModel.getId(), rowModel.getWord(), rowModel.getValue(), rowModel.getPatternID());
+        String row = FileUtils.toFileEntry(rowModel.getIdOfRow(), rowModel.getWord(), rowModel.getValue(), rowModel.getPatternId());
         fileWorker.save(ROW_FILE_NAME, row);
     }
 
@@ -36,7 +36,7 @@ public class RowDAO implements CrudDAO<RowModel, RowModel> {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
 
-                if (FileUtils.splitAndPartsString(line).equals(rowModel.getId())) {
+                if (FileUtils.splitAndPartsString(line).equals(rowModel.getIdOfRow())) {
                     return Optional.of(false);
                 }
             }
@@ -49,7 +49,7 @@ public class RowDAO implements CrudDAO<RowModel, RowModel> {
 
     @Override
     public void delete(RowModel rowModel) {
-        fileWorker.delete(ROW_FILE_NAME, rowModel.getWord());
+        fileWorker.delete(ROW_FILE_NAME, rowModel.getIdOfRow());
     }
 
     @Override

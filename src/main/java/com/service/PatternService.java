@@ -26,7 +26,10 @@ public class PatternService {
         return patternDAO.findAll();
     }
 
-    public PatternModel findById(String id) {
-        return patternDAO.findById(id);
+    public PatternModel findById(String idOfChosenPattern) {
+        return patternDAO.findById(idOfChosenPattern);
+    }
+    public String getPatternById(String idOfChosenPattern){//todo Попытка достать паттерн
+        return findById(idOfChosenPattern).getDescription();
     }
 }

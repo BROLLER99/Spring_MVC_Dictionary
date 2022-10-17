@@ -5,6 +5,13 @@
     <title>Add row</title>
 </head>
 <body>
-add
+Добавить строку
+<a th:text="${idOfChosenPattern}">Word</a>
+<form th:action="@{{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:object="${rowModel}" th:method="POST" accept-charset="UTF-8">
+    ID:<input type="text" th:field="*{idOfRow}"><br>
+    Слово:<input type="text" th:field="*{word}" th:pattern="${pattern}"><br>
+    Перевод:<input type="text" th:field="*{value}"><br>
+    <button type="submit" value="addPattern">Сохранить</button>
+</form>
 </body>
 </html>
