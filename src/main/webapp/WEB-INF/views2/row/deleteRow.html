@@ -6,9 +6,10 @@
 </head>
 <body>
 Удалить строку
-<form th:action="@{{id}(id=${id})}" th:object="${rowModel}" th:method="POST" accept-charset="UTF-8">
+<form th:action="@{{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:object="${deleteRowDTO}" th:method="POST" accept-charset="UTF-8">
     ID:<input type="text" th:field="*{idOfRow}"><br>
     <button type="submit" value="deletePattern">удалить</button>
 </form>
+<a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору строк</a>
 </body>
 </html>

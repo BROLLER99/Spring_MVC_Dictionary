@@ -6,11 +6,11 @@
 </head>
 <body>
 Добавить паттерн
-<form th:action="@{addPattern}" th:object="${patternModel}" th:method="POST" accept-charset="UTF-8">
-    ID:<input type="text" th:field="*{idOfDescription}"><br>
+<form th:action="@{addPattern}" th:object="${addPatternDTO}" th:method="POST" accept-charset="UTF-8">
     NameOfDescription:<input type="text" th:field="*{nameOfDescription}"><br>
     Description:<input type="text" th:field="*{description}"><br>
     <button type="submit" value="addPattern">Сохранить</button>
 </form>
+<a th:href="@{/pattern}"> Вернуться к выбору паттерна</a>
 </body>
 </html>

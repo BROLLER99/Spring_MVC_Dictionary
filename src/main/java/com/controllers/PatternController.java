@@ -1,6 +1,8 @@
 package com.controllers;
 
 import com.model.PatternModel;
+import com.model.dto.AddPatternDTO;
+import com.model.dto.DeletePatternDTO;
 import com.service.PatternService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,23 +21,23 @@ public class PatternController {
         return "/pattern/mainMenu";
     }
     @GetMapping("/addPattern")
-    public String addPattern(PatternModel patternModel,Model model){
-        model.addAttribute("patternModel", patternModel);
+    public String addPattern(Model model, AddPatternDTO addPatternDTO){
+        model.addAttribute("addPatternDTO", addPatternDTO);
         return "pattern/addPattern";
     }
     @PostMapping("/addPattern")
-    public String addLanguage(@ModelAttribute(name = "patternModel") PatternModel patternModel) {
-        patternService.save(patternModel);
+    public String addLanguage(@ModelAttribute(name = "addPatternDTO") AddPatternDTO addPatternDTO) {
+        patternService.save(addPatternDTO);
         return "redirect:/pattern";
     }
     @GetMapping("/deletePattern")
-    public String deletePattern(PatternModel patternModel,Model model){
-        model.addAttribute("patternModel", patternModel);
+    public String deletePattern(DeletePatternDTO deletePatternDTO, Model model){
+        model.addAttribute("deletePatternDTO", deletePatternDTO);
         return "pattern/deletePattern";
     }
     @PostMapping("/deletePattern")
-    public String deletePattern(@ModelAttribute(name = "patternModel") PatternModel patternModel) {
-        patternService.delete(patternModel);
+    public String deletePattern(@ModelAttribute(name = "deletePatternDTO") DeletePatternDTO deletePatternDTO) {
+        patternService.delete(deletePatternDTO);
         return "redirect:/pattern";
     }
 }

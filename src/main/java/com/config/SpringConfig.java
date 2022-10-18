@@ -1,8 +1,8 @@
 package com.config;
 
-import com.DAO.LocalStorageDAO;
-import com.DAO.RunTimeStorageDAO;
-import com.DAO.StorageDAO;
+//import com.DAO.LocalStorageDAO;
+//import com.DAO.RunTimeStorageDAO;
+//import com.DAO.StorageDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -61,12 +61,12 @@ public class SpringConfig implements WebMvcConfigurer {
         return templateEngine;
     }
 
-    @Value("${dictionary.type}")
-    @Bean
-    public StorageDAO storage(String storage) {
-        if (storage.length() == ZERO_FOR_DEFINE_STORAGE_TYPE) {
-            return new RunTimeStorageDAO();
-        }
-        return new LocalStorageDAO();
-    }
+//    @Value("${dictionary.type}")
+//    @Bean
+//    public StorageDAO storage(String storage) {
+//        if (storage.length() == ZERO_FOR_DEFINE_STORAGE_TYPE) {
+//            return new RunTimeStorageDAO();
+//        }
+//        return new LocalStorageDAO();
+//    }
 }

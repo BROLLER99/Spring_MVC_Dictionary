@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class FileWorker<T> {//todo: не совсем уверен в generics
@@ -45,7 +46,7 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (!FileUtils.splitAndPartsString(line).equals(idOfRow)) {
+                if (!FileUtils.selectionOfIdInLine(line).equals(idOfRow)) {
                     if(firstRow){
                         firstRow = false;
                     }else {
@@ -69,12 +70,27 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
             String line;
             List<T> list = new ArrayList<>();
             while ((line = bufferedReader.readLine()) != null) {
-                list.add((T) FileUtils.convertFromStringToEntity(line));
+                list.add((T) FileUtils.convertFromLineToEntity(line));
             }
             bufferedReader.close();
             return list;
         } catch (NullPointerException | IOException e) {
             throw new OutputAllException();
+        }
+    }
+    public Optional<T> findById(String chosenId, String fileName) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(fileName)))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+
+                if (FileUtils.selectionOfIdInLine(line).equals(chosenId)) {
+                    return Optional.of((T) FileUtils.convertFromLineToEntity(line));
+                }
+            }
+            bufferedReader.close();
+            return Optional.empty();
+        } catch (IOException e) {
+            throw new SearchException(chosenId);
         }
     }
 

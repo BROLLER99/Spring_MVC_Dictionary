@@ -15,27 +15,27 @@ public final class FileUtils {
     private static final int THREE_FOR_FIRST_PART_OF_ROW_IN_SPLIT = 3;
 
     public static String toFileEntry(Object... values) {
-        StringBuilder res = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
         for (Object value : values) {
-            if (res.length() != 0) {
-                res.append(SEPARATOR);
+            if (stringBuilder.length() != 0) {
+                stringBuilder.append(SEPARATOR);
             }
-            res.append(value);
+            stringBuilder.append(value);
         }
-        return res.toString();
+        return stringBuilder.toString();
     }
 
-    public static String splitAndPartsString(String line) throws CustomException {
+    public static String selectionOfIdInLine(String line) throws CustomException {
         try {
             String[] parts = line.split(SEPARATOR);
-            String nameOfDescription = parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim();
-            return nameOfDescription;
+            String idOfLine = parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim();
+            return idOfLine;
         } catch (PatternSyntaxException e) {
             throw new SplitException(line);
         }
     }
 
-    public static Object convertFromStringToEntity(String line) {
+    public static Object convertFromLineToEntity(String line) {
         String[] parts = line.split(SEPARATOR);
         if (parts.length == 3) {//todo не норма
             PatternModel pattern = new PatternModel();

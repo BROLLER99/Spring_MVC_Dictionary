@@ -1,16 +1,11 @@
 package com.DAO;
 
-import com.exeption.CustomException;
-import com.exeption.SearchException;
 import com.model.PatternModel;
 import com.utils.FileUtils;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
@@ -20,10 +15,6 @@ public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
 
     public PatternDAO(FileWorker fileWorker) {
         this.fileWorker = fileWorker;
-    }
-
-    private File createFile() throws CustomException {
-        return fileWorker.createFile(PATTERN_FILE_NAME);
     }
 
     @Override
@@ -42,19 +33,8 @@ public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
         return fileWorker.findAll(PATTERN_FILE_NAME);
     }
 
-    public PatternModel findById(String idOfChosenPattern) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile()))) {
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-
-                if (FileUtils.splitAndPartsString(line).equals(idOfChosenPattern)) {
-                    return (PatternModel) FileUtils.convertFromStringToEntity(line);
-                }
-            }
-            bufferedReader.close();
-            return new PatternModel();//todo Норм?
-        } catch (IOException e) {
-            throw new SearchException(idOfChosenPattern);
-        }
+    @Override
+    public Optional<PatternModel> findById(String idOfChosenPattern) {
+        return fileWorker.findById(idOfChosenPattern, PATTERN_FILE_NAME);
     }
 }
