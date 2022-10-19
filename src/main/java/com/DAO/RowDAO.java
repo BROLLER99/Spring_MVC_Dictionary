@@ -9,7 +9,7 @@ import java.util.Optional;
 
 
 @Component
-public class RowDAO implements CrudDAO<RowModel, RowModel> {
+public class RowDAO implements CrudDAO<RowModel, String> {
     private static final String ROW_FILE_NAME = "Row.txt";
 
     private final FileWorker fileWorker;

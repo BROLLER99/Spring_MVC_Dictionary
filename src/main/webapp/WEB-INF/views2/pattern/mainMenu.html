@@ -5,11 +5,32 @@
     <title>Main Page</title>
 </head>
 <body>
-Все паттерны
-<div th:each="patternModel : ${listPatterns}">
-    <a th:href="@{/row/{id}(id=${patternModel.getPatternId()})}" th:text="${patternModel.getPatternName()}">NameOfDescription</a>
-    <a th:href="@{/pattern/deletePattern(patternId=${patternModel.getPatternId()}, patternName=${patternModel.getPatternName()})}"> Удалить паттерн</a>
-</div>
+<table>
+    <caption>Все паттерны</caption>
+    <colgroup style="background-color: bisque;">
+        <col style="background-color: #c4daff;">
+        <col>
+    </colgroup>
+    <tbody>
+
+    <tr>
+        <th>Название</th>
+    </tr>
+    <div th:each="patternModel : ${listPatterns}">
+        <tr>
+            <td><a th:href="@{/row/{id}(id=${patternModel.getPatternId()})}" th:text="${patternModel.getPatternName()}">PatternName</a>
+            </td>
+            <td>
+                <form th:method="POST" th:action="@{/pattern/deletePattern}" th:object="${deletePatternDTO}"
+                      accept-charset="UTF-8">
+                    <input type="hidden" th:name="patternId" th:value="${patternModel.getPatternId()}">
+                    <button type="submit" value="deleteRow">удалить</button>
+                </form>
+            </td>
+        </tr>
+    </div>
+    </tbody>
+</table>
 <a th:href="@{/pattern/addPattern}"> Добваить паттерн</a>
 </body>
 </html>

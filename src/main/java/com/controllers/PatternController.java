@@ -17,6 +17,7 @@ public class PatternController {
     @GetMapping()
     public String startApp(Model model) {
         model.addAttribute("listPatterns", patternService.findAll());
+        model.addAttribute("deletePatternDTO", new DeletePatternDTO());
         return "/pattern/mainMenu";
     }
     @GetMapping("/addPattern")
@@ -28,13 +29,6 @@ public class PatternController {
     public String addLanguage(@ModelAttribute(name = "addPatternDTO") AddPatternDTO addPatternDTO) {
         patternService.save(addPatternDTO);
         return "redirect:/pattern";
-    }
-    @GetMapping("/deletePattern")
-    public String deletePattern( Model model, @RequestParam(value = "patternId") String patternId, @RequestParam(value = "patternName") String patternName){
-        model.addAttribute("patternId", patternId);
-        model.addAttribute("patternName", patternName);
-        model.addAttribute("deletePatternDTO", new DeletePatternDTO());
-        return "pattern/deletePattern";
     }
     @PostMapping("/deletePattern")
     public String deletePattern(@ModelAttribute(name = "deletePatternDTO") DeletePatternDTO deletePatternDTO) {

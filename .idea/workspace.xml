@@ -9,25 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Added work with DTO, split methods DAO and FileWorker and refactoring code">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="The delete function in the user interface has been moved next to each line.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/CrudDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/CrudDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/PatternController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/PatternController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/PatternModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/PatternModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/AddPatternDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/AddPatternDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/AddRowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/AddRowDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/DeletePatternDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/DeletePatternDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/DeleteRowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/DeleteRowDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/addPattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/addPattern.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/deletePattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/deletePattern.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/mainMenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/mainMenu.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/deleteRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/deleteRow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/deleteRow.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +73,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/student/IdeaProjects/Spring_MVC_Dictionary",
+    "last_opened_file_path": "C:/Users/student/IdeaProjects/Dictionary-unified-methods-dao",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -286,7 +277,7 @@
       <workItem from="1665561240192" duration="63268000" />
       <workItem from="1665985781961" duration="37160000" />
       <workItem from="1666086652530" duration="25154000" />
-      <workItem from="1666188388547" duration="5691000" />
+      <workItem from="1666188388547" duration="9394000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>
@@ -379,7 +370,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666090986157</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="The delete function in the user interface has been moved next to each line.">
+      <created>1666194630360</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666194630360</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,6 +420,7 @@
     <MESSAGE value="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity" />
     <MESSAGE value="Made a proper delete and write to files, created write and delete methods for the Row entity" />
     <MESSAGE value="Added work with DTO, split methods DAO and FileWorker and refactoring code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added work with DTO, split methods DAO and FileWorker and refactoring code" />
+    <MESSAGE value="The delete function in the user interface has been moved next to each line." />
+    <option name="LAST_COMMIT_MESSAGE" value="The delete function in the user interface has been moved next to each line." />
   </component>
 </project>

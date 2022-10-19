@@ -20,6 +20,7 @@ public class RowController {
     public String menu(@PathVariable("id") String idOfChosenPattern, Model model) {
         model.addAttribute("listRows", rowService.findRowsByPattern(idOfChosenPattern));
         model.addAttribute("id", idOfChosenPattern);
+        model.addAttribute("deleteRowDTO", new DeleteRowDTO());
         return "/row/allRows";
     }
 
@@ -36,16 +37,6 @@ public class RowController {
         addRowDTO.setIdOfChosenPattern(idOfChosenPattern);//todo не разобрался как в html установить id паттерна
         rowService.save(addRowDTO);
         return "redirect:/row/{id}";
-    }
-
-    @GetMapping("/deleteRow/{id}")
-    public String deleteRow(Model model, @PathVariable("id") String patternId, @RequestParam(value = "idOfRow") String idOfRow, @RequestParam(value = "word") String word) {
-        rowService.findById(idOfRow);
-        model.addAttribute("deleteRowDTO", new DeleteRowDTO());
-        model.addAttribute("rowId", idOfRow);
-        model.addAttribute("word", word);
-        model.addAttribute("patternId", patternId);
-        return "row/deleteRow";
     }
 
     @PostMapping("/deleteRow/{id}")

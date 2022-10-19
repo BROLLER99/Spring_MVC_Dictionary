@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
+public class PatternDAO implements CrudDAO<PatternModel, String> {
     private final String PATTERN_FILE_NAME = "Pattern.txt";
 
     private final FileWorker fileWorker;

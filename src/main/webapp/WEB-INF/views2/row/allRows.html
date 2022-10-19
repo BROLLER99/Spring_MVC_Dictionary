@@ -5,12 +5,30 @@
     <title>Row menu</title>
 </head>
 <body>
-Все строки выбранного словаря<br>
-<div th:each="rowModel : ${listRows}">
-    <a th:text="${rowModel.getWord()}">Слово</a>
-    <a th:text="${rowModel.getValue()}">Перевод</a>
-    <a th:href="@{/row/deleteRow/{id}(id=${id},idOfRow=${rowModel.getIdOfRow()}, word=${rowModel.getWord()})}"> Удалить строку</a>
-</div>
+<table>
+    <caption>Все строки выбранного словаря</caption>
+    <colgroup style="background-color: bisque;">
+        <col style="background-color: #c4daff;">
+        <col>
+    </colgroup>
+    <tbody>
+
+    <tr>
+        <th>Слово</th>
+        <th>Перевод</th>
+    </tr>
+    <div th:each="rowModel : ${listRows}">
+    <tr>
+        <td><a th:text="${rowModel.getWord()}">Слово</a></td>
+        <td><a th:text="${rowModel.getValue()}">Перевод</a></td>
+        <td><form th:method="POST" th:action="@{deleteRow/{id}(id=${id})}" th:object="${deleteRowDTO}" accept-charset="UTF-8">
+            <input type="hidden" th:name="idOfRow" th:value="${rowModel.getIdOfRow}">
+            <button type="submit" value="deleteRow">удалить</button>
+        </form></td>
+    </tr>
+    </div>
+    </tbody>
+</table>
 <a th:href="@{/row/addRow/{id}(id=${id})}"> Добваить строку</a>
 <br>
 <a th:href="@{/pattern}"> Вернуться к выбору паттерна</a>
