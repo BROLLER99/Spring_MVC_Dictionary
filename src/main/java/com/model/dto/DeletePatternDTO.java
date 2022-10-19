@@ -1,17 +1,22 @@
 package com.model.dto;
 
 public class DeletePatternDTO {
-    private String idOfDescription;
-
-    public String getIdOfDescription() {
-        return idOfDescription;
+    @Override
+    public String toString() {
+        return "DeletePatternDTO{" +
+                "patternId='" + patternId + '\'' +
+                '}';
     }
 
-    public void setIdOfDescription(String idOfDescription) {
-        this.idOfDescription = idOfDescription;
+    private String patternId;
+
+    public String getPatternId() {
+        return patternId;
     }
 
-    public DeletePatternDTO(String idOfDescription) {
-        this.idOfDescription = idOfDescription;
+    public void setPatternId(String patternId) {
+        this.patternId = patternId;
     }
+
+    public DeletePatternDTO(){};
 }

@@ -1,39 +1,39 @@
 package com.model;
 
 public class PatternModel {
-    private String idOfDescription;
-    private String description;
-    private String nameOfDescription;
-    public PatternModel(String description, String nameOfDescription, String idOfDescription) {
-        this.description = description;
-        this.nameOfDescription = nameOfDescription;
-        this.idOfDescription = idOfDescription;
+    private String patternId;
+    private String patternRule;
+    private String patternName;
+    public PatternModel(String patternRule, String patternName, String patternId) {
+        this.patternRule = patternRule;
+        this.patternName = patternName;
+        this.patternId = patternId;
     }
 
     public PatternModel() {
     }
 
-    public void setIdOfDescription(String idOfDescription) {
-        this.idOfDescription = idOfDescription;
+    public void setPatternId(String patternId) {
+        this.patternId = patternId;
     }
 
-    public String getIdOfDescription() {
-        return idOfDescription;
+    public String getPatternId() {
+        return patternId;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPatternRule() {
+        return patternRule;
     }
 
-    public String getNameOfDescription() {
-        return nameOfDescription;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPatternRule(String patternRule) {
+        this.patternRule = patternRule;
     }
 
-    public void setNameOfDescription(String nameOfDescription) {
-        this.nameOfDescription = nameOfDescription;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 }

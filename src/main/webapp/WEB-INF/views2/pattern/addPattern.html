@@ -7,8 +7,8 @@
 <body>
 Добавить паттерн
 <form th:action="@{addPattern}" th:object="${addPatternDTO}" th:method="POST" accept-charset="UTF-8">
-    NameOfDescription:<input type="text" th:field="*{nameOfDescription}"><br>
-    Description:<input type="text" th:field="*{description}"><br>
+    patternName:<input type="text" th:field="*{patternName}"><br>
+    patternRule:<input type="text" th:field="*{patternRule}"><br>
     <button type="submit" value="addPattern">Сохранить</button>
 </form>
 <a th:href="@{/pattern}"> Вернуться к выбору паттерна</a>

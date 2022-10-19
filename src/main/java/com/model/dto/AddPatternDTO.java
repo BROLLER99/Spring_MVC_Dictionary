@@ -1,27 +1,25 @@
 package com.model.dto;
 
 public class AddPatternDTO {
-    private String description;
-    private String nameOfDescription;
+    private String patternRule;
+    private String patternName;
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPatternRule(String patternRule) {
+        this.patternRule = patternRule;
     }
 
-    public void setNameOfDescription(String nameOfDescription) {
-        this.nameOfDescription = nameOfDescription;
+    public void setPatternName(String patternName) {
+        this.patternName = patternName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPatternRule() {
+        return patternRule;
     }
 
-    public String getNameOfDescription() {
-        return nameOfDescription;
+    public String getPatternName() {
+        return patternName;
     }
 
-    public AddPatternDTO(String description, String nameOfDescription) {
-        this.description = description;
-        this.nameOfDescription = nameOfDescription;
+    public AddPatternDTO() {
     }
 }

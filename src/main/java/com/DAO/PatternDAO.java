@@ -19,13 +19,13 @@ public class PatternDAO implements CrudDAO<PatternModel, PatternModel> {
 
     @Override
     public void save(PatternModel patternName) {
-        String row = FileUtils.toFileEntry(patternName.getIdOfDescription(), patternName.getNameOfDescription(), patternName.getDescription());
+        String row = FileUtils.toFileEntry(patternName.getPatternId(), patternName.getPatternName(), patternName.getPatternRule());
         fileWorker.save(PATTERN_FILE_NAME, row);
     }
 
     @Override
     public void delete(PatternModel patternName) {
-        fileWorker.delete(PATTERN_FILE_NAME, patternName.getIdOfDescription());
+        fileWorker.delete(PATTERN_FILE_NAME, patternName.getPatternId());
     }
 
     @Override

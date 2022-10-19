@@ -1,9 +1,7 @@
 package com.controllers;
 
-import com.model.RowModel;
 import com.model.dto.AddRowDTO;
 import com.model.dto.DeleteRowDTO;
-import com.service.PatternService;
 import com.service.RowService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,8 +24,8 @@ public class RowController {
     }
 
     @GetMapping("/addRow/{id}")
-    public String addRow(AddRowDTO addRowDTO, Model model, @PathVariable("id") String idOfChosenPattern) {
-        model.addAttribute("addRowDTO", addRowDTO);
+    public String addRow(Model model, @PathVariable("id") String idOfChosenPattern) {
+        model.addAttribute("addRowDTO", new AddRowDTO());
         model.addAttribute("idOfChosenPattern", idOfChosenPattern);
 //        model.addAttribute("pattern", patternService.getPatternById(idOfChosenPattern));
         return "row/addRow";
@@ -36,20 +34,23 @@ public class RowController {
     @PostMapping("/addRow/{id}")
     public String addRow(@ModelAttribute(name = "addRowDTO") AddRowDTO addRowDTO, @PathVariable("id") String idOfChosenPattern) {
         addRowDTO.setIdOfChosenPattern(idOfChosenPattern);//todo не разобрался как в html установить id паттерна
-        System.out.println(addRowDTO);
         rowService.save(addRowDTO);
         return "redirect:/row/{id}";
     }
 
     @GetMapping("/deleteRow/{id}")
-    public String deleteRow(DeleteRowDTO deleteRowDTO, Model model, @PathVariable("id") String idOfChosenPattern) {//todo Хочу вводить слово а удалять по id
-        model.addAttribute("deleteRowDTO", deleteRowDTO);
-        model.addAttribute("idOfChosenPattern", idOfChosenPattern);
+    public String deleteRow(Model model, @PathVariable("id") String patternId, @RequestParam(value = "idOfRow") String idOfRow, @RequestParam(value = "word") String word) {
+        rowService.findById(idOfRow);
+        model.addAttribute("deleteRowDTO", new DeleteRowDTO());
+        model.addAttribute("rowId", idOfRow);
+        model.addAttribute("word", word);
+        model.addAttribute("patternId", patternId);
         return "row/deleteRow";
     }
 
     @PostMapping("/deleteRow/{id}")
     public String deleteRow(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
+        System.out.println(deleteRowDTO.getIdOfRow());
         rowService.delete(deleteRowDTO);
         return "redirect:/row/{id}";
     }

@@ -6,14 +6,12 @@
 </head>
 <body>
 Все строки выбранного словаря<br>
-<a th:text="${id}">Word</a>
 <div th:each="rowModel : ${listRows}">
-    <a th:text="${rowModel.getWord()}">Word</a>
-    <a th:text="${rowModel.getValue()}">Value</a>
+    <a th:text="${rowModel.getWord()}">Слово</a>
+    <a th:text="${rowModel.getValue()}">Перевод</a>
+    <a th:href="@{/row/deleteRow/{id}(id=${id},idOfRow=${rowModel.getIdOfRow()}, word=${rowModel.getWord()})}"> Удалить строку</a>
 </div>
 <a th:href="@{/row/addRow/{id}(id=${id})}"> Добваить строку</a>
-<br>
-<a th:href="@{/row/deleteRow/{id}(id=${id})}"> Удалить строку</a>
 <br>
 <a th:href="@{/pattern}"> Вернуться к выбору паттерна</a>
 </body>

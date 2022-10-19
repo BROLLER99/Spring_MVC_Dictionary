@@ -6,10 +6,11 @@
 </head>
 <body>
 Удалить строку
-<form th:action="@{{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:object="${deleteRowDTO}" th:method="POST" accept-charset="UTF-8">
-    ID:<input type="text" th:field="*{idOfRow}"><br>
-    <button type="submit" value="deletePattern">удалить</button>
+<form th:action="@{{patternId}(patternId=${patternId})}" th:object="${deleteRowDTO}" th:method="POST" accept-charset="UTF-8">
+    <a th:text="'Вы уверены, что хотите удалить слово '+${word}+'?'"></a>
+    <input type="hidden" th:name="idOfRow" th:value="${rowId}"><br>
+    <button type="submit" value="deleteRow">удалить</button>
 </form>
-<a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору строк</a>
+<a th:href="@{/row/{patternId}(patternId=${patternId})}"> Вернуться к выбору строк</a>
 </body>
 </html>

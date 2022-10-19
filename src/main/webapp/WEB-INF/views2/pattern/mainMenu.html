@@ -7,10 +7,9 @@
 <body>
 Все паттерны
 <div th:each="patternModel : ${listPatterns}">
-    <a th:href="@{/row/{id}(id=${patternModel.getIdOfDescription()})}" th:text="${patternModel.getNameOfDescription()}">NameOfDescription</a>
+    <a th:href="@{/row/{id}(id=${patternModel.getPatternId()})}" th:text="${patternModel.getPatternName()}">NameOfDescription</a>
+    <a th:href="@{/pattern/deletePattern(patternId=${patternModel.getPatternId()}, patternName=${patternModel.getPatternName()})}"> Удалить паттерн</a>
 </div>
 <a th:href="@{/pattern/addPattern}"> Добваить паттерн</a>
-<br>
-<a th:href="@{/pattern/deletePattern}"> Удалить паттерн</a>
 </body>
 </html>

@@ -38,9 +38,6 @@ public class AddRowDTO {
         return value;
     }
 
-    public AddRowDTO(String idOfChosenPattern, String word, String value) {
-        this.idOfChosenPattern = idOfChosenPattern;
-        this.word = word;
-        this.value = value;
+    public AddRowDTO() {
     }
 }

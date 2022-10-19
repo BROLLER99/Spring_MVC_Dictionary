@@ -19,15 +19,15 @@ public class PatternService {
 
     public void save(AddPatternDTO addPatternDTO) {
         PatternModel patternModel = new PatternModel();
-        patternModel.setIdOfDescription(String.valueOf(Math.random()));
-        patternModel.setDescription(addPatternDTO.getDescription());
-        patternModel.setNameOfDescription(addPatternDTO.getNameOfDescription());
+        patternModel.setPatternId(String.valueOf(Math.random()));
+        patternModel.setPatternRule(addPatternDTO.getPatternRule());
+        patternModel.setPatternName(addPatternDTO.getPatternName());
         patternDAO.save(patternModel);
     }
 
     public void delete(DeletePatternDTO deletePatternDTO) {
         PatternModel patternModel = new PatternModel();
-        patternModel.setIdOfDescription(deletePatternDTO.getIdOfDescription());
+        patternModel.setPatternId(deletePatternDTO.getPatternId());
         patternDAO.delete(patternModel);
     }
 

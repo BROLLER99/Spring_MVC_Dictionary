@@ -1,6 +1,5 @@
 package com.controllers;
 
-import com.model.PatternModel;
 import com.model.dto.AddPatternDTO;
 import com.model.dto.DeletePatternDTO;
 import com.service.PatternService;
@@ -21,8 +20,8 @@ public class PatternController {
         return "/pattern/mainMenu";
     }
     @GetMapping("/addPattern")
-    public String addPattern(Model model, AddPatternDTO addPatternDTO){
-        model.addAttribute("addPatternDTO", addPatternDTO);
+    public String addPattern(Model model){
+        model.addAttribute("addPatternDTO", new AddPatternDTO());
         return "pattern/addPattern";
     }
     @PostMapping("/addPattern")
@@ -31,8 +30,10 @@ public class PatternController {
         return "redirect:/pattern";
     }
     @GetMapping("/deletePattern")
-    public String deletePattern(DeletePatternDTO deletePatternDTO, Model model){
-        model.addAttribute("deletePatternDTO", deletePatternDTO);
+    public String deletePattern( Model model, @RequestParam(value = "patternId") String patternId, @RequestParam(value = "patternName") String patternName){
+        model.addAttribute("patternId", patternId);
+        model.addAttribute("patternName", patternName);
+        model.addAttribute("deletePatternDTO", new DeletePatternDTO());
         return "pattern/deletePattern";
     }
     @PostMapping("/deletePattern")

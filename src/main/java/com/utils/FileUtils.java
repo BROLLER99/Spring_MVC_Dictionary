@@ -39,9 +39,9 @@ public final class FileUtils {
         String[] parts = line.split(SEPARATOR);
         if (parts.length == 3) {//todo не норма
             PatternModel pattern = new PatternModel();
-            pattern.setIdOfDescription((parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim()));
-            pattern.setNameOfDescription(parts[ONE_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-            pattern.setDescription(parts[TWO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
+            pattern.setPatternId((parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim()));
+            pattern.setPatternName(parts[ONE_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
+            pattern.setPatternRule(parts[TWO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
             return pattern;
         } else {
             RowModel row = new RowModel();

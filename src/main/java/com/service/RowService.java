@@ -46,7 +46,7 @@ public class RowService {
         List<RowModel> listRow = findAll();
         List<RowModel> listRowWithRule = new ArrayList<>();
         for (RowModel rowModel : listRow) {
-            if (Objects.equals(rowModel.getPatternId(), patternModel.getIdOfDescription())) {
+            if (Objects.equals(rowModel.getPatternId(), patternModel.getPatternId())) {
                 listRowWithRule.add(rowModel);
             }
         }
