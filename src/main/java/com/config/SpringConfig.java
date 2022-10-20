@@ -1,8 +1,8 @@
 package com.config;
 
-import com.DAO.LocalStorage;
-import com.DAO.RunTimeStorage;
-import com.DAO.Storage;
+import com.DAO.LocalStorageDAO;
+import com.DAO.RunTimeStorageDAO;
+import com.DAO.StorageDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
@@ -53,14 +53,16 @@ public class SpringConfig implements WebMvcConfigurer {
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setTemplateEngine(templateEngine());
+        resolver.setCharacterEncoding("UTF-8");
         registry.viewResolver(resolver);
     }
+
     @Value("${dictionary.type}")
     @Bean
-    public Storage storage(String storage) {
+    public StorageDAO storage(String storage) {
         if (storage.length() == ZERO_FOR_DEFINE_STORAGE_TYPE) {
-            return new RunTimeStorage();
+            return new RunTimeStorageDAO();
         }
-        return new LocalStorage();
+        return new LocalStorageDAO();
     }
 }

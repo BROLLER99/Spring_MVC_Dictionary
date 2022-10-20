@@ -1,51 +1,45 @@
 package com.service;
 
-import com.DAO.Storage;
-import com.exeption.CustomException;
+import com.DAO.StorageDAO;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 @Service
 public class MainService {
-    private static final String FILE_PATH = System.getProperty("user.dir");
-    private static final String CREATE_FILE_EXCEPTION = "Ошибка создания файла";
-    private final Storage storage;
-    private static File file;
+    private final static String THERE_IS_NO_SUCH_KEY = "Такого ключа нет";
+    private final static String THERE_IS_SUCH_KEY = "Есть такой ключ ";
+    private final StorageDAO storageDAO;
+    private static String nameOfFile;
 
-    public MainService(Storage storage) {
-        this.storage = storage;
+    public MainService(StorageDAO storageDAO) {
+        this.storageDAO = storageDAO;
     }
 
     public void addElement(String key, String value) {
-        storage.addElement(key, value);
+        storageDAO.addElement(key, value);
     }
 
     public void deleteElement(String key) {
-        storage.deleteElement(key);
+        storageDAO.deleteElement(key);
     }
 
-    public boolean searchElement(String key) {
-        return storage.searchElement(key);
+    public String searchElement(String key) {
+        if (storageDAO.searchElement(key))
+            return THERE_IS_SUCH_KEY + key;
+        return THERE_IS_NO_SUCH_KEY;
     }
 
     public List<String> outputAllElements() throws IOException {
-        return storage.outputAllElements();
+        return storageDAO.outputAllElements();
     }
 
-    public void createFile(String nameOfFile) {
-        try {
-            file = new File(FILE_PATH, nameOfFile);
-            if (!file.exists() && !file.createNewFile()) {
-                throw new CustomException(CREATE_FILE_EXCEPTION);
-            }
-        } catch (IOException | SecurityException | NullPointerException e) {
-            throw new CustomException(CREATE_FILE_EXCEPTION);
-        }
+    public void setNameOfFile(String nameOfFile) {
+        MainService.nameOfFile = nameOfFile;
     }
-    public static File getFile() {
-        return file;
+
+    public static String getNameOfFile() {
+        return nameOfFile;
     }
 }

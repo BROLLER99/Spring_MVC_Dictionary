@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Класс реализует методы интерфейса InterfaceDictionary по работе с map
  */
-public class RunTimeStorage implements Storage {
+public class RunTimeStorageDAO implements StorageDAO {
     /**
      * Объект dictionary который будет хранить коллекцию Map
      */
@@ -81,13 +81,13 @@ public class RunTimeStorage implements Storage {
     public List<String> outputAllElements() {
         try {
             StringBuilder stringBuilder = new StringBuilder();
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (Map.Entry<String, String> pair : dictionary.entrySet()) {
                 String key = pair.getKey();
                 String value = pair.getValue();
                 stringBuilder.append(key).append(KEY_VALUE_SEPARATOR).append(value).append("\n");
-                list.add(stringBuilder.toString());
             }
+            list.add(stringBuilder.toString());
             return list;
         } catch (IllegalStateException | NullPointerException e) {
             throw new CustomException(OUTPUT_ALL_EXCEPTION);
