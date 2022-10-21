@@ -23,7 +23,7 @@
         <td><a th:text="${rowModel.getValue()}">Перевод</a></td>
         <td><form th:method="POST" th:action="@{deleteRow/{id}(id=${id})}" th:object="${deleteRowDTO}" accept-charset="UTF-8">
             <input type="hidden" th:name="idOfRow" th:value="${rowModel.getIdOfRow}">
-            <button type="submit" value="deleteRow">удалить</button>
+            <button type="submit" value="deleteRow">Удалить</button>
         </form></td>
     </tr>
     </div>

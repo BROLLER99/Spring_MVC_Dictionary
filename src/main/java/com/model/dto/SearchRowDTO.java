@@ -11,7 +11,5 @@ public class SearchRowDTO {
         this.word = word;
     }
 
-    public SearchRowDTO(String word) {
-        this.word = word;
-    }
+    public SearchRowDTO() {}
 }

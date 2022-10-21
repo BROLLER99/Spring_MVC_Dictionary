@@ -4,11 +4,13 @@ import com.model.PatternModel;
 import com.utils.FileUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+import static com.utils.FileUtils.*;
 
 @Component
-public class PatternDAO implements CrudDAO<PatternModel, String> {
+public class PatternDAO implements CrudDAO<PatternModel> {
     private final String PATTERN_FILE_NAME = "Pattern.txt";
 
     private final FileWorker fileWorker;
@@ -18,23 +20,38 @@ public class PatternDAO implements CrudDAO<PatternModel, String> {
     }
 
     @Override
-    public void save(PatternModel patternName) {
-        String row = FileUtils.toFileEntry(patternName.getPatternId(), patternName.getPatternName(), patternName.getPatternRule());
+    public void save(PatternModel patternModel) {
+        String row = FileUtils.toFileEntry(patternModel.getPatternId(), patternModel.getPatternName(), patternModel.getPatternRule());
         fileWorker.save(PATTERN_FILE_NAME, row);
     }
 
     @Override
-    public void delete(PatternModel patternName) {
-        fileWorker.delete(PATTERN_FILE_NAME, patternName.getPatternId());
+    public void delete(PatternModel patternModel) {
+        String rowWithId = FileUtils.toFileEntry(patternModel.getPatternId());//todo Норм?
+        fileWorker.delete(PATTERN_FILE_NAME, rowWithId);
     }
 
     @Override
     public List<PatternModel> findAll() {
-        return fileWorker.findAll(PATTERN_FILE_NAME);
+        List<PatternModel> list = new ArrayList<>();
+        List<String> listPatterns = fileWorker.findAll(PATTERN_FILE_NAME);
+        for (String line : listPatterns){
+           list.add(fromStringToModel(line));
+        }
+        return list;
     }
 
     @Override
-    public Optional<PatternModel> findById(String idOfChosenPattern) {
-        return fileWorker.findById(idOfChosenPattern, PATTERN_FILE_NAME);
+    public PatternModel findById(PatternModel patternModel) {
+        String rowWithId = FileUtils.toFileEntry(patternModel.getPatternId());
+        return fromStringToModel(fileWorker.findById(rowWithId, PATTERN_FILE_NAME));
+    }
+    private PatternModel fromStringToModel(String line){
+        String[] parts = line.split(SEPARATOR);
+        PatternModel patternModel = new PatternModel();
+        patternModel.setPatternId((parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim()));
+        patternModel.setPatternName(parts[ONE_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
+        patternModel.setPatternRule(parts[TWO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
+        return patternModel;
     }
 }

@@ -1,7 +1,6 @@
 package com.service;
 
 import com.DAO.RowDAO;
-import com.model.PatternModel;
 import com.model.RowModel;
 import com.model.dto.AddRowDTO;
 import com.model.dto.DeleteRowDTO;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class RowService {
@@ -30,9 +28,9 @@ public class RowService {
         rowDAO.save(rowModel);
     }
 
-    public void findById(String ChosenId) {
-        rowDAO.findById(ChosenId);
-    }
+//    public void findById(String ChosenId) {
+//        rowDAO.findById(ChosenId);
+//    }
 
     public void delete(DeleteRowDTO deleteRowDTO) {
         RowModel rowModel = new RowModel();
@@ -41,12 +39,10 @@ public class RowService {
     }
 
     public List<RowModel> findRowsByPattern(String idOfChosenPattern) {
-        Optional<PatternModel> optionalPatternModel = patternService.findById(idOfChosenPattern);
-        PatternModel patternModel = optionalPatternModel.get();
-        List<RowModel> listRow = findAll();
+//        PatternModel patternModel = patternService.findById(idOfChosenPattern);//todo Мб вернуть так?
         List<RowModel> listRowWithRule = new ArrayList<>();
-        for (RowModel rowModel : listRow) {
-            if (Objects.equals(rowModel.getPatternId(), patternModel.getPatternId())) {
+        for (RowModel rowModel : findAll()) {
+            if (Objects.equals(rowModel.getPatternId(), idOfChosenPattern)) {
                 listRowWithRule.add(rowModel);
             }
         }

@@ -8,10 +8,10 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
-public class FileWorker<T> {//todo: не совсем уверен в generics
+public class FileWorker {
+    private final int numberOfPart = 0;
     private static final String FILE_PATH = System.getProperty("user.dir");
     private static final String TMP_FILE = "tmp";
 
@@ -28,7 +28,7 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
     }
 
     public void save(String fileName, String row) {
-        try (FileWriter fileWriter = new FileWriter(createFile(fileName),StandardCharsets.UTF_8, true)) {
+        try (FileWriter fileWriter = new FileWriter(createFile(fileName), StandardCharsets.UTF_8, true)) {
             if (createFile(fileName).length() != 0) {
                 fileWriter.write(System.lineSeparator());
             }
@@ -38,18 +38,18 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
         }
     }
 
-    public void delete(String fileName, String idOfRow) {
+    public void delete(String fileName, String row) {
         boolean firstRow = true;
         File tmpFile = new File(TMP_FILE + TMP_FILE + fileName);
         File file = createFile(fileName);
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(tmpFile));
+             BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (!FileUtils.selectionOfIdInLine(line).equals(idOfRow)) {
-                    if(firstRow){
+                if (!FileUtils.selectionOfIdInLine(line, numberOfPart).equals(FileUtils.selectionOfIdInLine(row, numberOfPart))) {
+                    if (firstRow) {
                         firstRow = false;
-                    }else {
+                    } else {
                         bufferedWriter.write(System.lineSeparator());
                     }
                     bufferedWriter.write(line);
@@ -65,12 +65,12 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
         }
     }
 
-    public List<T> findAll(String fileName) {
+    public List<String> findAll(String fileName) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(fileName), StandardCharsets.UTF_8))) {
             String line;
-            List<T> list = new ArrayList<>();
+            List<String> list = new ArrayList<>();
             while ((line = bufferedReader.readLine()) != null) {
-                list.add((T) FileUtils.convertFromLineToEntity(line));
+                list.add(line);
             }
             bufferedReader.close();
             return list;
@@ -78,19 +78,19 @@ public class FileWorker<T> {//todo: не совсем уверен в generics
             throw new OutputAllException();
         }
     }
-    public Optional<T> findById(String chosenId, String fileName) {
+
+    public String findById(String row, String fileName) {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(fileName)))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-
-                if (FileUtils.selectionOfIdInLine(line).equals(chosenId)) {
-                    return Optional.of((T) FileUtils.convertFromLineToEntity(line));
+                if (FileUtils.selectionOfIdInLine(line, numberOfPart).equals(FileUtils.selectionOfIdInLine(row,numberOfPart))) {
+                    return line;
                 }
             }
             bufferedReader.close();
-            return Optional.empty();
+            return line;//todo как
         } catch (IOException e) {
-            throw new SearchException(chosenId);
+            throw new SearchException(FileUtils.selectionOfIdInLine(row,numberOfPart));
         }
     }
 

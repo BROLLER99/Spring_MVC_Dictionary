@@ -7,8 +7,9 @@
 <body>
 Добавить строку
 <form th:action="@{{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:object="${addRowDTO}" th:method="POST" accept-charset="UTF-8">
-    Слово:<input type="text" th:field="*{word}" th:pattern="${pattern}"><br>
-    Перевод:<input type="text" th:field="*{value}"><br>
+    Слово:<input type="text" th:field="*{word}" th:pattern="${pattern}" required><br>
+    Перевод:<input type="text" th:field="*{value}" required><br>
+    <input type="hidden" th:name="idOfChosenPattern" th:value="${idOfChosenPattern}">
     <button type="submit" value="addPattern">Сохранить</button>
 </form>
 <a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору строк</a>

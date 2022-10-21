@@ -28,20 +28,18 @@ public class RowController {
     public String addRow(Model model, @PathVariable("id") String idOfChosenPattern) {
         model.addAttribute("addRowDTO", new AddRowDTO());
         model.addAttribute("idOfChosenPattern", idOfChosenPattern);
-//        model.addAttribute("pattern", patternService.getPatternById(idOfChosenPattern));
+//        model.addAttribute("pattern", pattern);
         return "row/addRow";
     }
 
     @PostMapping("/addRow/{id}")
     public String addRow(@ModelAttribute(name = "addRowDTO") AddRowDTO addRowDTO, @PathVariable("id") String idOfChosenPattern) {
-        addRowDTO.setIdOfChosenPattern(idOfChosenPattern);//todo не разобрался как в html установить id паттерна
         rowService.save(addRowDTO);
         return "redirect:/row/{id}";
     }
 
     @PostMapping("/deleteRow/{id}")
     public String deleteRow(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
-        System.out.println(deleteRowDTO.getIdOfRow());
         rowService.delete(deleteRowDTO);
         return "redirect:/row/{id}";
     }

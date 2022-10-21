@@ -35,4 +35,6 @@ public class PatternController {
         patternService.delete(deletePatternDTO);
         return "redirect:/pattern";
     }
+
+
 }
