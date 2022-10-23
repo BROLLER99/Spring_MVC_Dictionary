@@ -2,6 +2,7 @@ package com.controllers;
 
 import com.model.dto.AddRowDTO;
 import com.model.dto.DeleteRowDTO;
+import com.model.dto.SearchRowDTO;
 import com.service.RowService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +41,26 @@ public class RowController {
 
     @PostMapping("/deleteRow/{id}")
     public String deleteRow(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
+        rowService.delete(deleteRowDTO);
+        return "redirect:/row/{id}";
+    }
+
+    @GetMapping("/searchRow/{id}")
+    public String search(@PathVariable("id") String idOfChosenPattern, Model model) {
+        model.addAttribute("idOfChosenPattern", idOfChosenPattern);
+        model.addAttribute("searchRowDTO", new SearchRowDTO());
+        return "row/searchRow";
+    }
+
+    @GetMapping("/searchRow/result/{id}")
+    public String search(@ModelAttribute(name = "searchRowDTO") SearchRowDTO searchRowDTO, Model model, @PathVariable("id") String idOfChosenPattern) {
+        model.addAttribute("result", rowService.findByName(searchRowDTO));
+        model.addAttribute("idOfChosenPattern", idOfChosenPattern);
+        model.addAttribute("deleteRowDTO", new DeleteRowDTO());
+        return "row/resultOfSearch";
+    }
+    @PostMapping("/searchRow/result/deleteRow/{id}")
+    public String deleteRowInSearch(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
         rowService.delete(deleteRowDTO);
         return "redirect:/row/{id}";
     }

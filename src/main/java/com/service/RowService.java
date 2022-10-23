@@ -4,6 +4,7 @@ import com.DAO.RowDAO;
 import com.model.RowModel;
 import com.model.dto.AddRowDTO;
 import com.model.dto.DeleteRowDTO;
+import com.model.dto.SearchRowDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,11 +14,9 @@ import java.util.Objects;
 @Service
 public class RowService {
     private final RowDAO rowDAO;
-    private final PatternService patternService;
 
-    public RowService(RowDAO rowDAO, PatternService patternService) {
+    public RowService(RowDAO rowDAO) {
         this.rowDAO = rowDAO;
-        this.patternService = patternService;
     }
     public void save(AddRowDTO addRowDTO) {
         RowModel rowModel = new RowModel();
@@ -28,9 +27,15 @@ public class RowService {
         rowDAO.save(rowModel);
     }
 
-//    public void findById(String ChosenId) {
-//        rowDAO.findById(ChosenId);
-//    }
+    public List<RowModel> findByName(SearchRowDTO searchRowDTO) {
+        List<RowModel> list = new ArrayList<>();
+        for (RowModel rowModel : findAll()) {
+            if ((rowModel.getWord().contains(searchRowDTO.getWord())) && (Objects.equals(rowModel.getPatternId(), searchRowDTO.getPatternId()))) {
+                list.add(rowModel);
+            }
+        }
+        return list;
+    }
 
     public void delete(DeleteRowDTO deleteRowDTO) {
         RowModel rowModel = new RowModel();
