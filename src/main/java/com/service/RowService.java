@@ -14,18 +14,27 @@ import java.util.Objects;
 @Service
 public class RowService {
     private final RowDAO rowDAO;
+    private final PatternService patternService;
 
-    public RowService(RowDAO rowDAO) {
+    public RowService(RowDAO rowDAO, PatternService patternService) {
         this.rowDAO = rowDAO;
+        this.patternService = patternService;
     }
 
-    public void save(AddRowDTO addRowDTO) {
+    public boolean save(AddRowDTO addRowDTO) {
         RowModel rowModel = new RowModel();
-        rowModel.setIdOfRow(String.valueOf(Math.random()));
-        rowModel.setWord(addRowDTO.getWord());
-        rowModel.setValue(addRowDTO.getValue());
-        rowModel.setPatternId(addRowDTO.getIdOfChosenPattern());
-        rowDAO.save(rowModel);
+        String rule = patternService.findById(addRowDTO.getIdOfChosenPattern()).getPatternRule();
+        String word= addRowDTO.getWord();
+        boolean result = word.matches(rule);
+        if(addRowDTO.getWord().matches(rule)) {
+            rowModel.setWord(addRowDTO.getWord());
+            rowModel.setIdOfRow(String.valueOf(Math.random()));
+            rowModel.setValue(addRowDTO.getValue());
+            rowModel.setPatternId(addRowDTO.getIdOfChosenPattern());
+            rowDAO.save(rowModel);
+            return result;
+        }
+        return result;
     }
 
     public List<RowModel> findByName(SearchRowDTO searchRowDTO) {

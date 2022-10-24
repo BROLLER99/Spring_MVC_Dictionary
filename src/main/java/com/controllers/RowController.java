@@ -29,18 +29,19 @@ public class RowController {
     public String addRow(Model model, @PathVariable("id") String idOfChosenPattern) {
         model.addAttribute("addRowDTO", new AddRowDTO());
         model.addAttribute("idOfChosenPattern", idOfChosenPattern);
-//        model.addAttribute("pattern", pattern);
         return "row/addRow";
     }
 
     @PostMapping("/addRow/{id}")
-    public String addRow(@ModelAttribute(name = "addRowDTO") AddRowDTO addRowDTO, @PathVariable("id") String idOfChosenPattern) {
-        rowService.save(addRowDTO);
-        return "redirect:/row/{id}";
+    public String addRow(@ModelAttribute(name = "addRowDTO") AddRowDTO addRowDTO) {
+        if(rowService.save(addRowDTO)){
+            return "redirect:/row/{id}";
+        }
+        return "redirect:/row/addRow/{id}";
     }
 
     @PostMapping("/deleteRow/{id}")
-    public String deleteRow(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
+    public String deleteRow(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO) {
         rowService.delete(deleteRowDTO);
         return "redirect:/row/{id}";
     }
@@ -61,7 +62,7 @@ public class RowController {
     }
 
     @PostMapping("/searchRow/result/deleteRow/{id}")
-    public String deleteRowInSearch(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
+    public String deleteRowInSearch(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO) {
         rowService.delete(deleteRowDTO);
         return "redirect:/row/{id}";
     }

@@ -34,12 +34,9 @@ public class PatternService {
         return patternDAO.findAll();
     }
 
-//    public PatternModel findById(String patternId) {
-//        PatternModel patternModel = new PatternModel();
-//        patternModel.setPatternId(patternId);
-//        return patternDAO.findById(patternModel);
-//    }
-//    public String getPatternById(String idOfChosenPattern){//todo Попытка достать паттерн
-//        return findById(idOfChosenPattern).get().getPatternRule();
-//    }
+    public PatternModel findById(String patternId) {
+        PatternModel patternModel = new PatternModel();
+        patternModel.setPatternId(patternId);
+        return patternDAO.findById(patternModel);
+    }
 }

@@ -80,7 +80,7 @@ public class FileWorker {
     }
 
     public String findById(String row, String fileName) {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(fileName)))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(fileName), StandardCharsets.UTF_8))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 if (FileUtils.selectionOfIdInLine(line, numberOfPart).equals(FileUtils.selectionOfIdInLine(row, numberOfPart))) {
@@ -88,7 +88,7 @@ public class FileWorker {
                 }
             }
             bufferedReader.close();
-            return line;//todo как
+            return line;//todo норм?
         } catch (IOException e) {
             throw new SearchException(FileUtils.selectionOfIdInLine(row, numberOfPart));
         }
