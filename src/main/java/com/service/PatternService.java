@@ -7,7 +7,6 @@ import com.model.dto.DeletePatternDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PatternService {
@@ -35,11 +34,11 @@ public class PatternService {
         return patternDAO.findAll();
     }
 
-    public PatternModel findById(String patternId) {
-        PatternModel patternModel = new PatternModel();
-        patternModel.setPatternId(patternId);
-        return patternDAO.findById(patternModel);
-    }
+//    public PatternModel findById(String patternId) {
+//        PatternModel patternModel = new PatternModel();
+//        patternModel.setPatternId(patternId);
+//        return patternDAO.findById(patternModel);
+//    }
 //    public String getPatternById(String idOfChosenPattern){//todo Попытка достать паттерн
 //        return findById(idOfChosenPattern).get().getPatternRule();
 //    }

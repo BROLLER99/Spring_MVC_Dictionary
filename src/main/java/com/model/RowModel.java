@@ -22,6 +22,7 @@ public class RowModel {
         this.value = value;
         this.patternId = patternId;
     }
+
     public void setIdOfRow(String idOfRow) {
         this.idOfRow = idOfRow;
     }

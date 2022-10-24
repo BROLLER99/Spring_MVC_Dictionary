@@ -3,6 +3,7 @@ package com.DAO;
 import com.model.RowModel;
 import com.utils.FileUtils;
 import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,23 +29,25 @@ public class RowDAO implements CrudDAO<RowModel> {
     @Override
     public RowModel findById(RowModel rowModel) {
         String row = FileUtils.toFileEntry(rowModel.getIdOfRow());
-        return fromStringToModel(fileWorker.findById(row,ROW_FILE_NAME));
+        return fromStringToModel(fileWorker.findById(row, ROW_FILE_NAME));
     }
+
     @Override
     public void delete(RowModel rowModel) {
         String rowWithId = FileUtils.toFileEntry(rowModel.getIdOfRow());
-        fileWorker.delete(ROW_FILE_NAME, rowWithId );
+        fileWorker.delete(ROW_FILE_NAME, rowWithId);
     }
 
     @Override
     public List<RowModel> findAll() {
         List<RowModel> list = new ArrayList<>();
         List<String> listPatterns = fileWorker.findAll(ROW_FILE_NAME);
-        for (String line : listPatterns){
+        for (String line : listPatterns) {
             list.add(fromStringToModel(line));
         }
         return list;
     }
+
     private RowModel fromStringToModel(String line) {
         String[] parts = line.split(SEPARATOR);
         RowModel rowModel = new RowModel();

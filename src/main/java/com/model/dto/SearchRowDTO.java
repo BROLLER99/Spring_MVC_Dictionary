@@ -20,5 +20,6 @@ public class SearchRowDTO {
         this.word = word;
     }
 
-    public SearchRowDTO() {}
+    public SearchRowDTO() {
+    }
 }

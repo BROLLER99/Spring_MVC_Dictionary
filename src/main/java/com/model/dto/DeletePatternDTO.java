@@ -18,5 +18,8 @@ public class DeletePatternDTO {
         this.patternId = patternId;
     }
 
-    public DeletePatternDTO(){};
+    public DeletePatternDTO() {
+    }
+
+    ;
 }

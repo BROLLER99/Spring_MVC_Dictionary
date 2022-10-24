@@ -4,6 +4,7 @@ public class PatternModel {
     private String patternId;
     private String patternRule;
     private String patternName;
+
     public PatternModel(String patternRule, String patternName, String patternId) {
         this.patternRule = patternRule;
         this.patternName = patternName;

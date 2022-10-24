@@ -59,6 +59,7 @@ public class RowController {
         model.addAttribute("deleteRowDTO", new DeleteRowDTO());
         return "row/resultOfSearch";
     }
+
     @PostMapping("/searchRow/result/deleteRow/{id}")
     public String deleteRowInSearch(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO, @PathVariable("id") String idOfChosenPattern) {
         rowService.delete(deleteRowDTO);

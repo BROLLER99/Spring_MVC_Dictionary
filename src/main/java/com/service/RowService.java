@@ -18,6 +18,7 @@ public class RowService {
     public RowService(RowDAO rowDAO) {
         this.rowDAO = rowDAO;
     }
+
     public void save(AddRowDTO addRowDTO) {
         RowModel rowModel = new RowModel();
         rowModel.setIdOfRow(String.valueOf(Math.random()));
@@ -30,7 +31,7 @@ public class RowService {
     public List<RowModel> findByName(SearchRowDTO searchRowDTO) {
         List<RowModel> list = new ArrayList<>();
         for (RowModel rowModel : findAll()) {
-            if ((rowModel.getWord().contains(searchRowDTO.getWord())) && (Objects.equals(rowModel.getPatternId(), searchRowDTO.getPatternId()))) {
+            if ((rowModel.getWord().toUpperCase().contains(searchRowDTO.getWord().toUpperCase())) && (Objects.equals(rowModel.getPatternId(), searchRowDTO.getPatternId()))) {
                 list.add(rowModel);
             }
         }
@@ -53,7 +54,8 @@ public class RowService {
         }
         return listRowWithRule;
     }
+
     private List<RowModel> findAll() {
-        return  rowDAO.findAll();
+        return rowDAO.findAll();
     }
 }

@@ -83,14 +83,14 @@ public class FileWorker {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(createFile(fileName)))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                if (FileUtils.selectionOfIdInLine(line, numberOfPart).equals(FileUtils.selectionOfIdInLine(row,numberOfPart))) {
+                if (FileUtils.selectionOfIdInLine(line, numberOfPart).equals(FileUtils.selectionOfIdInLine(row, numberOfPart))) {
                     return line;
                 }
             }
             bufferedReader.close();
             return line;//todo как
         } catch (IOException e) {
-            throw new SearchException(FileUtils.selectionOfIdInLine(row,numberOfPart));
+            throw new SearchException(FileUtils.selectionOfIdInLine(row, numberOfPart));
         }
     }
 
