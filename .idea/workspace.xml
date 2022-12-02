@@ -9,12 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Added validation for add Row">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Started to rewrite the dictionary on Spring MVC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/CrudDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/CrudDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,15 +27,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="version_with_entity" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,7 +58,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2FfayWiGOjP6vSvWRVgDiazSEYQ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,12 +73,18 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/student/IdeaProjects/Dictionary-unified-methods-dao",
+    "last_opened_file_path": "C:/Users/boartamonov/IdeaProjects/intbus",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
     "spring.configuration.checksum": "64b4f40797b7d0cb60426bc7663f864d"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle",
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -279,6 +289,8 @@
       <workItem from="1666188388547" duration="45619000" />
       <workItem from="1666360548066" duration="310000" />
       <workItem from="1666547759918" duration="8272000" />
+      <workItem from="1669786437516" duration="2941000" />
+      <workItem from="1669805998845" duration="21195000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>

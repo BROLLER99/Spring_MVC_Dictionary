@@ -4,12 +4,18 @@ import com.DAO.PatternDAO;
 import com.model.PatternModel;
 import com.model.dto.AddPatternDTO;
 import com.model.dto.DeletePatternDTO;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 @Service
+@Repository
+@Transactional
 public class PatternService {
+
     private final PatternDAO patternDAO;
 
     public PatternService(PatternDAO patternDAO) {
