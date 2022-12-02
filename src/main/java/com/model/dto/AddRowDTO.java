@@ -1,7 +1,7 @@
 package com.model.dto;
 
 public class AddRowDTO {
-    private String idOfChosenPattern;
+    private Long idOfChosenPattern;
     private String word;
     private String value;
 
@@ -14,11 +14,11 @@ public class AddRowDTO {
                 '}';
     }
 
-    public String getIdOfChosenPattern() {
+    public Long getIdOfChosenPattern() {
         return idOfChosenPattern;
     }
 
-    public void setIdOfChosenPattern(String idOfChosenPattern) {
+    public void setIdOfChosenPattern(Long idOfChosenPattern) {
         this.idOfChosenPattern = idOfChosenPattern;
     }
 

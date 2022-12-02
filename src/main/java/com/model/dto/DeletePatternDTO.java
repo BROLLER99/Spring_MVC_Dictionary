@@ -8,13 +8,13 @@ public class DeletePatternDTO {
                 '}';
     }
 
-    private String patternId;
+    private Long patternId;
 
-    public String getPatternId() {
+    public Long getPatternId() {
         return patternId;
     }
 
-    public void setPatternId(String patternId) {
+    public void setPatternId(Long patternId) {
         this.patternId = patternId;
     }
 

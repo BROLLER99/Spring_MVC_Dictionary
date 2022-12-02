@@ -1,57 +1,43 @@
-//package com.DAO;
-//
-//import com.models.PatternModel;
-//import com.utils.FileUtils;
-//import org.springframework.stereotype.Component;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//import static com.utils.FileUtils.*;
-//
-//@Component
-//public class PatternDAO implements CrudDAO<PatternModel> {
-//    private final String PATTERN_FILE_NAME = "Pattern.txt";
-//
-//    private final FileWorker fileWorker;
-//
-//    public PatternDAO(FileWorker fileWorker) {
-//        this.fileWorker = fileWorker;
-//    }
-//
-//    @Override
-//    public void save(PatternModel patternModel) {
-//        String row = FileUtils.toFileEntry(patternModel.getPatternId(), patternModel.getPatternName(), patternModel.getPatternRule());
-//        fileWorker.save(PATTERN_FILE_NAME, row);
-//    }
-//
-//    @Override
-//    public void delete(PatternModel patternModel) {
-//        String rowWithId = FileUtils.toFileEntry(patternModel.getPatternId());//todo Норм?
-//        fileWorker.delete(PATTERN_FILE_NAME, rowWithId);
-//    }
-//
-//    @Override
-//    public List<PatternModel> findAll() {
-//        List<PatternModel> list = new ArrayList<>();
-//        List<String> listPatterns = fileWorker.findAll(PATTERN_FILE_NAME);
-//        for (String line : listPatterns){
-//           list.add(fromStringToModel(line));
-//        }
-//        return list;
-//    }
-//
-//    @Override
-//    public PatternModel findById(PatternModel patternModel) {
-//        String rowWithId = FileUtils.toFileEntry(patternModel.getPatternId());
-//        return fromStringToModel(fileWorker.findById(rowWithId, PATTERN_FILE_NAME));
-//    }
-//    private PatternModel fromStringToModel(String line){
-//        String[] parts = line.split(SEPARATOR);
-//        PatternModel patternModel = new PatternModel();
-//        patternModel.setPatternId((parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim()));
-//        patternModel.setPatternName(parts[ONE_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-//        patternModel.setPatternRule(parts[TWO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-//        return patternModel;
-//    }
-//}
+package com.DAO;
+
+import com.model.db_entities.Pattern;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class PatternDAO implements CrudDAO<Pattern,Long> {
+    private SessionFactory sessionFactory;
+
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    @Override
+    public void save(Pattern pattern) {
+        Session session = sessionFactory.getCurrentSession();
+        session.merge(pattern);
+    }
+
+    @Override
+    public void delete(Pattern pattern) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(pattern);
+    }
+
+    @Override
+    public List<Pattern> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Pattern").list();
+    }
+
+    @Override
+    public Pattern findById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Pattern.class, id);
+    }
+}
