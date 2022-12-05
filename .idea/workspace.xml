@@ -9,20 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Started to rewrite the dictionary on Spring MVC">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="WorkingVersion_V1.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/CrudDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/CrudDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/PatternDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/DataBaseConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/PatternModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/RowModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Pattern.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Row.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/AddRowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/AddRowDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/DeletePatternDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/DeletePatternDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/DeleteRowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/DeleteRowDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666589016849</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="WorkingVersion_V1.0">
+      <created>1669990788160</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1669990788160</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,6 +469,7 @@
     <MESSAGE value="Deleted not using code" />
     <MESSAGE value="Create search method by word in some pattern and refactoring code" />
     <MESSAGE value="Added validation for add Row" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validation for add Row" />
+    <MESSAGE value="WorkingVersion_V1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="WorkingVersion_V1.0" />
   </component>
 </project>

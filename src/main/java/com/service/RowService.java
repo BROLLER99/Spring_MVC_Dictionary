@@ -25,31 +25,29 @@ public class RowService {
     @Transactional
     public boolean save(AddRowDTO addRowDTO) {
         Row row = new Row();
-        String rule = patternService.findById(addRowDTO.getIdOfChosenPattern()).getPatternRule();
-        String word= addRowDTO.getWord();
-        boolean result = word.matches(rule);
-        if(addRowDTO.getWord().matches(rule)) {
+        boolean result = addRowDTO.getWord().matches(patternService.findById(addRowDTO.getIdOfChosenPattern()).getPatternRule());
+        if (result) {
             row.setWord(addRowDTO.getWord());
-            row.setIdOfRow((long) Math.random());
             row.setValue(addRowDTO.getValue());
-            row.setPatternId(addRowDTO.getIdOfChosenPattern());
+            row.setPattern(patternService.findById(addRowDTO.getIdOfChosenPattern()));
             rowDAO.save(row);
-            return result;
+            return true;
         }
-        return result;
+        return false;
     }
 
     @Transactional
     public List<Row> findByName(SearchRowDTO searchRowDTO) {
         List<Row> list = new ArrayList<>();
         for (Row row : findAll()) {
-            if ((row.getWord().toUpperCase().contains(searchRowDTO.getWord().toUpperCase())) && (Objects.equals(row.getPatternId(), searchRowDTO.getPatternId()))) {
+            if ((row.getWord().toUpperCase().contains(searchRowDTO.getWord().toUpperCase())) && (Objects.equals(row.getPattern().getPatternId().toString(), searchRowDTO.getPatternId()))) {
                 list.add(row);
             }
         }
         return list;
     }
 
+    @Transactional
     public void delete(DeleteRowDTO deleteRowDTO) {
         Row row = new Row();
         row.setIdOfRow(deleteRowDTO.getIdOfRow());
@@ -60,7 +58,7 @@ public class RowService {
     public List<Row> findRowsByPattern(String idOfChosenPattern) {
         List<Row> listRowWithRule = new ArrayList<>();
         for (Row row : findAll()) {
-            if (Objects.equals(row.getPatternId(), idOfChosenPattern)) {
+            if (Objects.equals(row.getPattern().getPatternId().toString(), idOfChosenPattern)) {
                 listRowWithRule.add(row);
             }
         }

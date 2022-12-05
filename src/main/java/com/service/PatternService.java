@@ -1,11 +1,9 @@
 package com.service;
 
 import com.DAO.PatternDAO;
-import com.model.PatternModel;
 import com.model.db_entities.Pattern;
 import com.model.dto.AddPatternDTO;
 import com.model.dto.DeletePatternDTO;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +22,6 @@ public class PatternService {
     @Transactional
     public void save(AddPatternDTO addPatternDTO) {
         Pattern pattern = new Pattern();
-        pattern.setPatternId((long) Math.random());
         pattern.setPatternRule(addPatternDTO.getPatternRule());
         pattern.setPatternName(addPatternDTO.getPatternName());
         patternDAO.save(pattern);
@@ -44,8 +41,6 @@ public class PatternService {
 
     @Transactional
     public Pattern findById(Long patternId) {
-//        Pattern pattern = new Pattern();
-//        pattern.setPatternId(patternId);
         return patternDAO.findById(patternId);
     }
 }
