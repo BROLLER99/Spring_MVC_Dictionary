@@ -1,8 +1,6 @@
 package com.controllers;
 
-import com.model.dto.AddRowDTO;
-import com.model.dto.DeleteRowDTO;
-import com.model.dto.SearchRowDTO;
+import com.model.dto.*;
 import com.service.RowService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +20,7 @@ public class RowController {
         model.addAttribute("listRows", rowService.findRowsByPattern(idOfChosenPattern));
         model.addAttribute("id", idOfChosenPattern);
         model.addAttribute("deleteRowDTO", new DeleteRowDTO());
+        model.addAttribute("updateRowDTO", new UpdateRowDTO());
         return "/row/allRows";
     }
 
@@ -64,6 +63,17 @@ public class RowController {
     @PostMapping("/searchRow/result/deleteRow/{id}")
     public String deleteRowInSearch(@ModelAttribute(name = "deleteRowDTO") DeleteRowDTO deleteRowDTO) {
         rowService.delete(deleteRowDTO);
+        return "redirect:/row/{id}";
+    }
+    @PostMapping("row/updateOld/{id}")
+    public String updateOld(@ModelAttribute(name = "updateRowDTO") UpdateRowDTO updateRowDTO, Model model, @PathVariable("id") String idOfChosenPattern) {
+        model.addAttribute("updateRowDTO", updateRowDTO);
+        model.addAttribute("idOfChosenPattern", idOfChosenPattern);
+        return "row/updateRow";
+    }
+    @PostMapping("/updateRow/{id}")
+    public String updateRow(@ModelAttribute(name = "updateRowDTO") UpdateRowDTO updateRowDTO) {
+        rowService.update(updateRowDTO);
         return "redirect:/row/{id}";
     }
 }

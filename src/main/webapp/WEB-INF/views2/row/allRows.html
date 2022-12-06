@@ -18,15 +18,24 @@
         <th>Перевод</th>
     </tr>
     <div th:each="row : ${listRows}">
-    <tr>
-        <td><a th:text="${row.getWord()}">Слово</a></td>
-        <td><a th:text="${row.getValue()}">Перевод</a></td>
-        <td><form th:method="POST" th:action="@{deleteRow/{id}(id=${id})}" th:object="${deleteRowDTO}" accept-charset="UTF-8">
-            <input type="hidden" th:name="idOfRow" th:value="${row.getIdOfRow}">
-            <button type="submit" value="deleteRow">Удалить</button>
-        </form>
-        </td>
-    </tr>
+        <tr>
+            <td><a th:text="${row.getWord()}">Слово</a></td>
+            <td><a th:text="${row.getValue()}">Перевод</a></td>
+            <td>
+                <form th:method="POST" th:action="@{/row/deleteRow/{id}(id=${id})}" th:object="${deleteRowDTO}"
+                      accept-charset="UTF-8">
+                    <input type="hidden" th:name="idOfRow" th:value="${row.getIdOfRow}">
+                    <button type="submit" value="deleteRow">Удалить</button>
+                </form>
+                <form th:method="POST" th:action="@{/row/updateOld/{id}(id=${id})}" th:object="${updateRowDTO}"
+                      accept-charset="UTF-8">
+                    <input type="hidden" th:name="idOfRow" th:value="${row.getIdOfRow()}">
+                    <input type="hidden" th:name="pattern" th:value="${row.getPattern()}">
+                    <input type="hidden" th:name="value" th:value="${row.getValue()}">
+                    <button type="submit" value="updateRow">Изменить</button>
+                </form>
+            </td>
+        </tr>
     </div>
     </tbody>
 </table>

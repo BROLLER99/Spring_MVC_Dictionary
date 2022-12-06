@@ -5,6 +5,7 @@ import com.model.db_entities.Row;
 import com.model.dto.AddRowDTO;
 import com.model.dto.DeleteRowDTO;
 import com.model.dto.SearchRowDTO;
+import com.model.dto.UpdateRowDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -68,5 +69,13 @@ public class RowService {
     @Transactional
     public List<Row> findAll() {
         return rowDAO.findAll();
+    }
+    @Transactional
+    public void update(UpdateRowDTO updateRow){
+        Row row = new Row();
+        row.setIdOfRow(updateRow.getIdOfRow());
+        row.setWord(updateRow.getWord());
+        row.setValue(updateRow.getValue());
+        rowDAO.update(row);
     }
 }

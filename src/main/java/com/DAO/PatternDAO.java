@@ -40,4 +40,9 @@ public class PatternDAO implements CrudDAO<Pattern,Long> {
         Session session = sessionFactory.getCurrentSession();
         return session.get(Pattern.class, id);
     }
+    @Override
+    public void update(Pattern pattern) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(pattern);
+    }
 }

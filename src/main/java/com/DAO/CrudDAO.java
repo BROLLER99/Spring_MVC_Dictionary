@@ -12,5 +12,6 @@ public interface CrudDAO<T,ID> {
   List<T> findAll();
 
   T findById(ID chosenId);
+  void update(T entity);
 
 }

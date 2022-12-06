@@ -42,5 +42,10 @@ public class RowDAO implements CrudDAO<Row, Long> {
         return session.get(Row.class, id);
     }
 
+    @Override
+    public void update(Row row) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(row);
+    }
 }
 
