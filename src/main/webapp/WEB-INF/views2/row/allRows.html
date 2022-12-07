@@ -30,7 +30,7 @@
                 <form th:method="POST" th:action="@{updateOld/{id}(id=${id})}" th:object="${updateRowDTO}"
                       accept-charset="UTF-8">
                     <input type="hidden" th:name="idOfRow" th:value="${row.getIdOfRow()}">
-                    <input type="hidden" th:name="pattern" th:value="${row.getPattern()}">
+                    <input type="hidden" th:name="word" th:value="${row.getWord()}">
                     <input type="hidden" th:name="value" th:value="${row.getValue()}">
                     <button type="submit" value="updateRow">Изменить</button>
                 </form>

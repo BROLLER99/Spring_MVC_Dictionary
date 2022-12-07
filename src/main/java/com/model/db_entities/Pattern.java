@@ -13,7 +13,7 @@ public class Pattern {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patternId;
-    @Column(name = "patternRule")
+    @Column(name = "patternRule", updatable = false)
     private String patternRule;
     @Column(name = "patternName")
     private String patternName;

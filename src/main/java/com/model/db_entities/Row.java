@@ -16,7 +16,7 @@ public class Row {
     private String word;
     @Column(name = "value")
     private String value;
-    @JoinColumn(name = "patternId")
+    @JoinColumn(name = "patternId", updatable = false)
     @ManyToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Pattern pattern;

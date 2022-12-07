@@ -2,7 +2,7 @@ package com.model.dto;
 
 public class SearchRowByValueDTO {
     private String Value;
-    private String patternId;
+    private Long patternId;
 
     public SearchRowByValueDTO() {
     }
@@ -15,11 +15,11 @@ public class SearchRowByValueDTO {
         Value = value;
     }
 
-    public String getPatternId() {
+    public Long getPatternId() {
         return patternId;
     }
 
-    public void setPatternId(String patternId) {
+    public void setPatternId(Long patternId) {
         this.patternId = patternId;
     }
 }

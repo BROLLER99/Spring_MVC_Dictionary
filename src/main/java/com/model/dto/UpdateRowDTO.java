@@ -1,12 +1,10 @@
 package com.model.dto;
 
-import com.model.db_entities.Pattern;
-
 public class UpdateRowDTO {
     private Long idOfRow;
     private String word;
     private String value;
-    private Pattern pattern;
+    private Long patternId;
 
     public Long getIdOfRow() {
         return idOfRow;
@@ -32,11 +30,11 @@ public class UpdateRowDTO {
         this.value = value;
     }
 
-    public Pattern getPattern() {
-        return pattern;
+    public Long getPatternId() {
+        return patternId;
     }
 
-    public void setPattern(Pattern pattern) {
-        this.pattern = pattern;
+    public void setPatternId(Long patternId) {
+        this.patternId = patternId;
     }
 }

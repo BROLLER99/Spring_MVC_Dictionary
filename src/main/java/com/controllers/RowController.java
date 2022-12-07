@@ -86,7 +86,7 @@ public class RowController {
         return "redirect:/row/{id}";
     }
     @PostMapping("/updateOld/{id}")
-    public String updateOld(@ModelAttribute(name = "updateRowDTO") UpdateRowDTO updateRowDTO, Model model, @PathVariable("id") String idOfChosenPattern) {
+    public String updateOld(@ModelAttribute(name = "updateRowDTO") UpdateRowDTO updateRowDTO, Model model, @PathVariable("id") Long idOfChosenPattern) {
         model.addAttribute("updateRowDTO", updateRowDTO);
         model.addAttribute("idOfChosenPattern", idOfChosenPattern);
         return "row/updateRow";
