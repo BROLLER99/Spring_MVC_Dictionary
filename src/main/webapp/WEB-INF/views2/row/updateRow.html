@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение строки</title>
+</head>
+<body>
+Изменить строку
+<form th:action="@{/row/updateRow/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:object="${updateRowDTO}"
+      th:method="POST" accept-charset="UTF-8">
+    Название:<input type="text" th:field="*{word}" required><br>
+    <input type="hidden" th:field="*{value}" th:value="${updateRowDTO.getValue()}" required><br>
+    <input type="hidden" th:field="*{idOfRow}" th:value="${updateRowDTO.getIdOfRow()}" required><br>
+    <input type="hidden" th:field="*{pattern}" th:value="${updateRowDTO.getPattern()}" required><br>
+    <button type="submit" value="updatePattern">Сохранить</button>
+</form>
+<a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору паттерна</a>
+</body>
+</html>
