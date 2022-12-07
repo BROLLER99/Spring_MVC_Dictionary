@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение паттерна</title>
+</head>
+<body>
+Изменить паттерн
+<form th:action="@{updatePattern}" th:object="${updatePatternDTO}" th:method="POST" accept-charset="UTF-8">
+    Название:<input type="text" th:field="*{patternName}" required><br>
+    <input type="hidden" th:field="*{patternRule}" th:value="${updatePatternDTO.patternRule}" required><br>
+    <input type="hidden" th:field="*{patternId}" th:value="${updatePatternDTO.patternId}" required><br>
+    <button type="submit" value="updatePattern">Сохранить</button>
+</form>
+<a th:href="@{/pattern}"> Вернуться к выбору паттерна</a>
+</body>
+</html>

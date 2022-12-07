@@ -1,6 +1,6 @@
 package com.model.dto;
 
-public class SearchRowDTO {
+public class SearchRowByWordDTO {
     private String word;
     private String patternId;
 
@@ -20,6 +20,6 @@ public class SearchRowDTO {
         this.word = word;
     }
 
-    public SearchRowDTO() {
+    public SearchRowByWordDTO() {
     }
 }
