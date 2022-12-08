@@ -9,20 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value.">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Pattern.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Pattern.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Row.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/db_entities/Row.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/SearchRowByValueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/SearchRowByValueDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/SearchRowByWordDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/SearchRowByWordDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/dto/UpdateRowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/dto/UpdateRowDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/updatePattern.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/pattern/updatePattern.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/addRow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/allRows.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/updateRow.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views2/row/updateRow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +300,7 @@
       <workItem from="1666547759918" duration="8272000" />
       <workItem from="1669786437516" duration="2941000" />
       <workItem from="1669805998845" duration="21195000" />
-      <workItem from="1670338094468" duration="24743000" />
+      <workItem from="1670338094468" duration="26914000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>
@@ -465,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670396885466</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row.">
+      <created>1670419549930</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1670419549930</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,6 +524,7 @@
     <MESSAGE value="Version-2.0" />
     <MESSAGE value="Added update method for Pattern and Row. This method working in Pattern, but not in Row." />
     <MESSAGE value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
-    <option name="LAST_COMMIT_MESSAGE" value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+    <MESSAGE value="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row." />
   </component>
 </project>
