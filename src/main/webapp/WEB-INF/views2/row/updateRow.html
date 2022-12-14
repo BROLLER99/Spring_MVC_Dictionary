@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение перевода</title>
+</head>
+<body>
+Изменить строку
+<form th:action="@{/row/updateRow/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:object="${updateRowDTO}"
+      th:method="POST" accept-charset="UTF-8">
+    <a th:value="${idOfChosenPattern}"></a>
+    Слово:<input type="text" th:label="${updateRowDTO.word}" th:field="*{word}" required><br>
+    Перевод:<input type="text" th:label="${updateRowDTO.value}" th:field="*{value}" required><br>
+    <input type="hidden" th:field="*{idOfRow}" th:value="${updateRowDTO.getIdOfRow()}" required>
+    <input type="hidden" th:name="patternId" th:value="${idOfChosenPattern}" required>
+    <button type="submit" value="updatePattern">Сохранить</button>
+</form>
+<a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору паттерна</a>
+</body>
+</html>

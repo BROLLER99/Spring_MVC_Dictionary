@@ -2,6 +2,7 @@ package com.controllers;
 
 import com.model.dto.AddPatternDTO;
 import com.model.dto.DeletePatternDTO;
+import com.model.dto.UpdatePatternDTO;
 import com.service.PatternService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ public class PatternController {
     public String startApp(Model model) {
         model.addAttribute("listPatterns", patternService.findAll());
         model.addAttribute("deletePatternDTO", new DeletePatternDTO());
+        model.addAttribute("updatePatternDTO", new UpdatePatternDTO());
         return "/pattern/mainMenu";
     }
 
@@ -40,6 +42,15 @@ public class PatternController {
         patternService.delete(deletePatternDTO);
         return "redirect:/pattern";
     }
-
+    @PostMapping("/updateOld")
+    public String updatePattern(@ModelAttribute(name = "updatePatternDTO") UpdatePatternDTO updatePatternDTO, Model model) {
+        model.addAttribute("updatePatternDTO", updatePatternDTO);
+        return "pattern/updatePattern";
+    }
+    @PostMapping("/updatePattern")
+    public String updatePattern(@ModelAttribute(name = "updatePatternDTO") UpdatePatternDTO updatePatternDTO) {
+        patternService.update(updatePatternDTO);
+        return "redirect:/pattern";
+    }
 
 }

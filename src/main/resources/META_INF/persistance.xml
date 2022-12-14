@@ -1,0 +1,11 @@
+<persistence>
+  <persistence-unit name="Dictionary">
+    <jta-data-source>jdbc:postgresql://localhost:5432/dictionary</jta-data-source>
+    <properties>
+      <property name="connection.username">postgres</property>
+      <property name="connection.password">123</property>
+      <property name="hibernate.show_sql" value="false"/>
+      <property name="driver.name">org.postgresql.Driver</property>
+    </properties>
+  </persistence-unit>
+</persistence>

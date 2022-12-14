@@ -1,62 +1,75 @@
 package com.DAO;
 
-import com.model.RowModel;
-import com.utils.FileUtils;
-import org.springframework.stereotype.Component;
+import com.model.db_entities.Row;;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static com.utils.FileUtils.*;
 
+@Repository
+public class RowDAO implements CrudDAO<Row, Long> {
+    private SessionFactory sessionFactory;
 
-@Component
-public class RowDAO implements CrudDAO<RowModel> {
-    private static final String ROW_FILE_NAME = "Row.txt";
-
-    private final FileWorker fileWorker;
-
-    public RowDAO(FileWorker fileWorker) {
-        this.fileWorker = fileWorker;
+    @Autowired
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
-    public void save(RowModel rowModel) {
-        String row = FileUtils.toFileEntry(rowModel.getIdOfRow(), rowModel.getWord(), rowModel.getValue(), rowModel.getPatternId());
-        fileWorker.save(ROW_FILE_NAME, row);
+    public void save(Row row) {
+        Session session = sessionFactory.getCurrentSession();
+        session.merge(row);
     }
 
     @Override
-    public RowModel findById(RowModel rowModel) {
-        String row = FileUtils.toFileEntry(rowModel.getIdOfRow());
-        return fromStringToModel(fileWorker.findById(row, ROW_FILE_NAME));
+    public void delete(Row row) {
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(row);
     }
 
     @Override
-    public void delete(RowModel rowModel) {
-        String rowWithId = FileUtils.toFileEntry(rowModel.getIdOfRow());
-        fileWorker.delete(ROW_FILE_NAME, rowWithId);
+    public List<Row> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("from Row").list();
     }
 
     @Override
-    public List<RowModel> findAll() {
-        List<RowModel> list = new ArrayList<>();
-        List<String> listPatterns = fileWorker.findAll(ROW_FILE_NAME);
-        for (String line : listPatterns) {
-            list.add(fromStringToModel(line));
-        }
+    public Row findById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Row.class, id);
+    }
+
+    @Override
+    public void update(Row row) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(row);
+    }
+
+    public List<Row> findByName(String name, long patId) {
+        Session session = sessionFactory.getCurrentSession();
+        List<Row> list = session.createQuery(
+                        "FROM Row r WHERE r.pattern.patternId = :patId AND lower(r.word)LIKE :nameLower")
+                .setParameter("nameLower", "%" + name.toLowerCase() + "%")
+                .setParameter("patId", patId).list();
         return list;
     }
-
-    private RowModel fromStringToModel(String line) {
-        String[] parts = line.split(SEPARATOR);
-        RowModel rowModel = new RowModel();
-        rowModel.setIdOfRow(parts[ZERO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-        rowModel.setWord(parts[ONE_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-        rowModel.setValue(parts[TWO_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-        rowModel.setPatternId(parts[THREE_FOR_FIRST_PART_OF_ROW_IN_SPLIT].trim());
-        return rowModel;
+    public List<Row> findByValue(String value, long patId) {
+        Session session = sessionFactory.getCurrentSession();
+        List<Row> list = session.createQuery(
+                        "FROM Row r WHERE r.pattern.patternId = :patId AND lower(r.value) LIKE :valueLower ")
+                .setParameter("valueLower", "%" + value.toLowerCase() + "%")
+                .setParameter("patId", patId).list();
+        return list;
     }
-
+    public List<Row> findByPattern(Long idOfChosenPattern){
+        Session session = sessionFactory.getCurrentSession();
+        List<Row> list = session.createQuery(
+                        "FROM Row r WHERE r.pattern.patternId = :patId")
+               .setParameter("patId", idOfChosenPattern).list();
+        return list;
+    }
 }
 

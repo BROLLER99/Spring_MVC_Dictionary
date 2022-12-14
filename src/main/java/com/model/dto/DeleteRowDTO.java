@@ -1,16 +1,16 @@
 package com.model.dto;
 
 public class DeleteRowDTO {
-    private String idOfRow;
+    private Long idOfRow;
 
     public DeleteRowDTO() {
     }
 
-    public String getIdOfRow() {
+    public Long getIdOfRow() {
         return idOfRow;
     }
 
-    public void setIdOfRow(String idOfRow) {
+    public void setIdOfRow(Long idOfRow) {
         this.idOfRow = idOfRow;
     }
 }

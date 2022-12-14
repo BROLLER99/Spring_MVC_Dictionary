@@ -24,7 +24,13 @@
                 <form th:method="POST" th:action="@{/pattern/deletePattern}" th:object="${deletePatternDTO}"
                       accept-charset="UTF-8">
                     <input type="hidden" th:name="patternId" th:value="${patternModel.getPatternId()}">
-                    <button type="submit" value="deleteRow">удалить</button>
+                    <button type="submit" value="deletePattern">Удалить</button>
+                </form>
+                <form th:method="POST" th:action="@{/pattern/updateOld}" th:object="${updatePatternDTO}"
+                      accept-charset="UTF-8">
+                    <input type="hidden" th:name="patternId" th:value="${patternModel.getPatternId()}">
+                    <input type="hidden" th:name="patternRule" th:value="${patternModel.getPatternRule()}">
+                    <button type="submit" value="deletePattern">Изменить</button>
                 </form>
             </td>
         </tr>

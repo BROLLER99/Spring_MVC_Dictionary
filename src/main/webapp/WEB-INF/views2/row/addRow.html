@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add row</title>
@@ -10,7 +10,7 @@
     Слово:<input type="text" th:field="*{word}" th:pattern="${pattern}" required><br>
     Перевод:<input type="text" th:field="*{value}" required><br>
     <input type="hidden" th:name="idOfChosenPattern" th:value="${idOfChosenPattern}">
-    <button type="submit" value="addPattern">Сохранить</button>
+    <button type="submit" value="addRow">Сохранить</button>
 </form>
 <a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору строк</a>
 </body>

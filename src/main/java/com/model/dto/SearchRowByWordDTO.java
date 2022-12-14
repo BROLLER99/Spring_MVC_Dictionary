@@ -1,14 +1,14 @@
 package com.model.dto;
 
-public class SearchRowDTO {
+public class SearchRowByWordDTO {
     private String word;
-    private String patternId;
+    private Long patternId;
 
-    public String getPatternId() {
+    public Long getPatternId() {
         return patternId;
     }
 
-    public void setPatternId(String patternId) {
+    public void setPatternId(Long patternId) {
         this.patternId = patternId;
     }
 
@@ -20,6 +20,6 @@ public class SearchRowDTO {
         this.word = word;
     }
 
-    public SearchRowDTO() {
+    public SearchRowByWordDTO() {
     }
 }

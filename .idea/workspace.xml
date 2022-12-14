@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Added validation for add Row">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/FileWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controllers/RowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/PatternService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +32,21 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="version_with_entity" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+        <option name="rewordedMessage" value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="14f997091131be9b5bb47f142d5806d9e5cec87b" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -56,7 +66,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2FfayWiGOjP6vSvWRVgDiazSEYQ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,12 +81,19 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/student/IdeaProjects/Dictionary-unified-methods-dao",
+    "last_opened_file_path": "C:/Users/boartamonov/IdeaProjects/Spring_MVC_Dictionary",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "File.Encoding",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
     "spring.configuration.checksum": "64b4f40797b7d0cb60426bc7663f864d"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle",
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -279,6 +298,9 @@
       <workItem from="1666188388547" duration="45619000" />
       <workItem from="1666360548066" duration="310000" />
       <workItem from="1666547759918" duration="8272000" />
+      <workItem from="1669786437516" duration="2941000" />
+      <workItem from="1669805998845" duration="21195000" />
+      <workItem from="1670338094468" duration="26914000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>
@@ -399,11 +421,62 @@
       <option name="project" value="LOCAL" />
       <updated>1666589016849</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="WorkingVersion_V1.0">
+      <created>1669990788160</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1669990788160</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Version-2.0">
+      <created>1670237214984</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1670237214984</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added update method for Pattern and Row. This method working in Pattern, but not in Row.">
+      <created>1670339209712</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670339209712</updated>
+    </task>
+    <task id="LOCAL-00021" summary="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value.">
+      <created>1670396739902</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1670396739902</updated>
+    </task>
+    <task id="LOCAL-00022" summary="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value.">
+      <created>1670396885466</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1670396885466</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row.">
+      <created>1670419549930</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1670419549930</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:javax.persistence:javax.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -416,7 +489,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="version_with_data_base" />
                       </list>
                     </value>
                   </entry>
@@ -447,6 +520,11 @@
     <MESSAGE value="Deleted not using code" />
     <MESSAGE value="Create search method by word in some pattern and refactoring code" />
     <MESSAGE value="Added validation for add Row" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validation for add Row" />
+    <MESSAGE value="WorkingVersion_V1.0" />
+    <MESSAGE value="Version-2.0" />
+    <MESSAGE value="Added update method for Pattern and Row. This method working in Pattern, but not in Row." />
+    <MESSAGE value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+    <MESSAGE value="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row." />
   </component>
 </project>

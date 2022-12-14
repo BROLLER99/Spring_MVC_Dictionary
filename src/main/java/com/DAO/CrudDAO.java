@@ -1,11 +1,17 @@
 package com.DAO;
 
 import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
-public interface CrudDAO<T>{
-    void save(T patternName);
-    void delete(T patternName);
-    List<T> findAll();
-    T findById(T chosenId);//todo Убрал Optional
+public interface CrudDAO<T,ID> {
+
+  void save(T entity);
+
+  void delete(T entity);
+
+  List<T> findAll();
+
+  T findById(ID chosenId);
+  void update(T entity);
 
 }
