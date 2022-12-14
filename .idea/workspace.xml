@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Spring_MVC_Dictionary:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Refactoring code">
+    <list default="true" id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/LocalStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/LocalStorageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RunTimeStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RunTimeStorageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/StorageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/model/RuleOfDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/model/RuleOfDictionary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/MainService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/MainService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/DAO/RowDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/RowService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/utils/FileUtils.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,17 +23,30 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="version_with_entity" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+        <option name="rewordedMessage" value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="14f997091131be9b5bb47f142d5806d9e5cec87b" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -51,22 +66,34 @@
     </option>
   </component>
   <component name="ProjectId" id="2FfayWiGOjP6vSvWRVgDiazSEYQ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/student/IdeaProjects/Alishev_lessons",
+    "last_opened_file_path": "C:/Users/boartamonov/IdeaProjects/Spring_MVC_Dictionary",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "Errors"
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "spring.configuration.checksum": "64b4f40797b7d0cb60426bc7663f864d"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle",
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -75,6 +102,8 @@
       <recent name="C:\Users\student\IdeaProjects\Spring_MVC_Dictionary\src\main\java\com" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\student\IdeaProjects\Spring_MVC_Dictionary\src\main\webapp\WEB-INF\views2" />
+      <recent name="C:\Users\student\IdeaProjects\Spring_MVC_Dictionary\src\main\webapp\WEB-INF\views2\pattern" />
       <recent name="C:\Users\student\IdeaProjects\Spring_MVC_Dictionary\target" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -84,28 +113,177 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="com.poratu.idea.plugins.tomcat" nameIsGenerated="true">
-      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
-      <predefined_log_file enabled="true" id="Tomcat Access Log" />
-      <predefined_log_file id="Tomcat Catalina Log" />
-      <predefined_log_file id="Tomcat Manager Log" />
-      <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="contextPath" value="/Spring_MVC_Dictionary" />
-      <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
-      <option name="tomcatInfo">
-        <TomcatInfo>
-          <option name="name" value="Apache Tomcat/8.5.82" />
-          <option name="path" value="$PROJECT_DIR$/../../../../apache-tomcat-8.5.82" />
-          <option name="version" value="8.5.82.0" />
-        </TomcatInfo>
-      </option>
-      <option name="vmOptions" value="" />
+    <configuration name="Tomcat 9.0.60" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.60" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/pattern" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="Spring_MVC_Dictionary:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="17d709b9-5ce5-440c-b313-236c016c8768" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="65217" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Spring_MVC_Dictionary:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.60" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="15d2c2d7-f59d-469f-a471-cc7873cc12cb" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="65217" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringBeansView">
+    <option name="beanDetailsProportion" value="0.3" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="967b43f6-6623-485f-9257-f16e7131df8c" name="Changes" comment="" />
@@ -113,6 +291,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664885848670</updated>
+      <workItem from="1665560107013" duration="1101000" />
+      <workItem from="1665561240192" duration="63268000" />
+      <workItem from="1665985781961" duration="37160000" />
+      <workItem from="1666086652530" duration="25154000" />
+      <workItem from="1666188388547" duration="45619000" />
+      <workItem from="1666360548066" duration="310000" />
+      <workItem from="1666547759918" duration="8272000" />
+      <workItem from="1669786437516" duration="2941000" />
+      <workItem from="1669805998845" duration="21195000" />
+      <workItem from="1670338094468" duration="26914000" />
     </task>
     <task id="LOCAL-00001" summary="Started to rewrite the dictionary on Spring MVC">
       <created>1664899994243</created>
@@ -163,8 +351,132 @@
       <option name="project" value="LOCAL" />
       <updated>1665140071385</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Rename DAO classes and set private fields in models">
+      <created>1665492073514</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665492073514</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page">
+      <created>1665583434246</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1665583434246</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added three methods for working with the &quot;pattern&quot;, started working with the next entity">
+      <created>1665657627102</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1665657627102</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity">
+      <created>1665756553227</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1665756553227</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Made a proper delete and write to files, created write and delete methods for the Row entity">
+      <created>1666012459340</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666012459340</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added work with DTO, split methods DAO and FileWorker and refactoring code">
+      <created>1666090986157</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666090986157</updated>
+    </task>
+    <task id="LOCAL-00014" summary="The delete function in the user interface has been moved next to each line.">
+      <created>1666194630360</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1666194630360</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Made data output in the form of a table and made more practical use of DTO">
+      <created>1666198805832</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1666198805832</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Deleted not using code">
+      <created>1666244228945</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1666244228945</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Create search method by word in some pattern and refactoring code">
+      <created>1666589016849</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1666589016849</updated>
+    </task>
+    <task id="LOCAL-00018" summary="WorkingVersion_V1.0">
+      <created>1669990788160</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1669990788160</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Version-2.0">
+      <created>1670237214984</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1670237214984</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added update method for Pattern and Row. This method working in Pattern, but not in Row.">
+      <created>1670339209712</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670339209712</updated>
+    </task>
+    <task id="LOCAL-00021" summary="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value.">
+      <created>1670396739902</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1670396739902</updated>
+    </task>
+    <task id="LOCAL-00022" summary="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value.">
+      <created>1670396885466</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1670396885466</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row.">
+      <created>1670419549930</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1670419549930</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:javax.persistence:javax.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="maven-packaging:war" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -177,7 +489,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="version_with_data_base" />
                       </list>
                     </value>
                   </entry>
@@ -197,6 +509,22 @@
     <MESSAGE value="Added a comparison with a pattern when entering a word and updated interface in commands of dictionary" />
     <MESSAGE value="Fixed bag with output elements in method outputAllElements in RunTime dictionary" />
     <MESSAGE value="Refactoring code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring code" />
+    <MESSAGE value="Rename DAO classes and set private fields in models" />
+    <MESSAGE value="Implemented the entities &quot;String&quot; and &quot;Pattern&quot; in the code of the dictionary, made a method for displaying all Patterns, made the correct output of Russian characters on the HTML page" />
+    <MESSAGE value="Added three methods for working with the &quot;pattern&quot;, started working with the next entity" />
+    <MESSAGE value="Added new exceptions extending CustomException, splitted working with file and data, added new class FileUtils, created one interface for working with my entities, rename some classes and fields, create controller and view for output all rows for &quot;Row&quot; entity" />
+    <MESSAGE value="Made a proper delete and write to files, created write and delete methods for the Row entity" />
+    <MESSAGE value="Added work with DTO, split methods DAO and FileWorker and refactoring code" />
+    <MESSAGE value="The delete function in the user interface has been moved next to each line." />
+    <MESSAGE value="Made data output in the form of a table and made more practical use of DTO" />
+    <MESSAGE value="Deleted not using code" />
+    <MESSAGE value="Create search method by word in some pattern and refactoring code" />
+    <MESSAGE value="Added validation for add Row" />
+    <MESSAGE value="WorkingVersion_V1.0" />
+    <MESSAGE value="Version-2.0" />
+    <MESSAGE value="Added update method for Pattern and Row. This method working in Pattern, but not in Row." />
+    <MESSAGE value="The searchRowByValue method has been created, thanks to which you can now search for a row by word or value." />
+    <MESSAGE value="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the methods findByName, findByValue, findByPattern by means of database queries, changed the update method for row." />
   </component>
 </project>

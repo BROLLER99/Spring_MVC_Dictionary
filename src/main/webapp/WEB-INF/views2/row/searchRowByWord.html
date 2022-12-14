@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск строки</title>
+</head>
+<body>
+Введите ключ, которое хотите найти
+<form th:action="@{result/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}" th:method="GET" th:object="${searchRowByWordDTO}" accept-charset="UTF-8">
+    <input type="hidden" th:name="patternId" th:value="${idOfChosenPattern}"/>
+    <input type="text" th:field="*{word}" required>
+    <button type="submit" value="searchRow">Найти</button>
+</form>
+<a th:href="@{/row/{idOfChosenPattern}(idOfChosenPattern=${idOfChosenPattern})}"> Вернуться к выбору строк</a>
+</body>
+</html>
